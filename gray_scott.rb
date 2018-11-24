@@ -130,9 +130,7 @@ def hsv2rgb(h)
   rgb = UInt8.zeros 256, 256, 3
   h = h.expand_dims(2)
   t = UInt8.cast(t).expand_dims(2)
-  i = i.expand_dims(2)
-  p i.shape
-#  i = UInt8.dstack([i,i,i])
+  i = UInt8.dstack([i,i,i])
   fuga = i.eq 0
   rgb[i.eq 0] = UInt8.dstack([v,t,p])[i.eq 0]
   rgb[i.eq 1] = UInt8.dstack([q,v,p])[i.eq 1]
