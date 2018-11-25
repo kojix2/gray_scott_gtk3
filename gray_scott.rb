@@ -98,12 +98,13 @@ def on_switch_changed(_w, active)
 end
 
 def on_motion(_widget, e)
-  return unless @v
-
   x = e.x / 2
   y = e.y / 2
   if x > 5 && y > 5 && x < 250 && y < 250
     @v[(y - 2)..(y + 2), (x - 2)..(x + 2)] = 0.5
+  end
+  unless @flag
+    @gimage.pixbuf = to_pixbuf @v
   end
 end
 
