@@ -8,6 +8,15 @@ end
 SFloat = Numo::SFloat
 UInt8  = Numo::UInt8
 
+# Timeout用秒数 MSEC 設定
+if ARGV[0]
+  msec = ARGV[0].to_i
+else
+  puts "please specify command-line argument. For example `ruby gray_scott.rb 40`"
+  exit
+end
+MSEC = msec
+
 # パラメータ
 Dx = 0.01
 Dt = 1
@@ -89,7 +98,7 @@ end
 def on_switch_changed(_w, active)
   @flag = active
   if active
-    GLib::Timeout.add 25 do
+    GLib::Timeout.add MSEC do
       update_u_v
       @gimage.pixbuf = to_pixbuf @u
       @flag
