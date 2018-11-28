@@ -12,7 +12,7 @@ UInt8  = Numo::UInt8
 if ARGV[0]
   msec = ARGV[0].to_i
 else
-  puts "please specify command-line argument. For example `ruby gray_scott.rb 40`"
+  puts 'please specify command-line argument. For example `ruby gray_scott.rb 40`'
   exit
 end
 MSEC = msec
@@ -28,8 +28,10 @@ Dv = 1e-5
 # 初期化
 @u = SFloat.ones 256, 256
 @v = SFloat.zeros 256, 256
+@show_u = true
+@color = 'colorful'
 
-# 間違いよけ 
+# 間違いよけ
 A = (1..-1).freeze
 B = (0..-2).freeze
 T = true
@@ -72,7 +74,7 @@ end
 def on_new_button_clicked
   @u.fill 1.0
   @v.fill 0.0
-  @gimage.pixbuf = to_pixbuf @u
+  display
 end
 
 def on_f_changed(f)
@@ -95,13 +97,21 @@ def on_save_button_clicked
   dialog.destroy
 end
 
+def display
+  @gimage.pixbuf = if @show_u
+                     to_pixbuf @u
+                   else
+                     to_pixbuf @v
+                   end
+end
+
 def on_switch_changed(_w, active)
-  @flag = active
+  @doing_now = active
   if active
     GLib::Timeout.add MSEC do
       update_u_v
-      @gimage.pixbuf = to_pixbuf @u
-      @flag
+      display
+      @doing_now
     end
   end
 end
@@ -112,15 +122,42 @@ def on_motion(_widget, e)
   if x > 5 && y > 5 && x < 250 && y < 250
     @v[(y - 2)..(y + 2), (x - 2)..(x + 2)] = 0.5
   end
-  unless @flag
-    @gimage.pixbuf = to_pixbuf @v
-  end
+  display unless @doing_now
+end
+
+def on_uv_combobox_changed(w)
+  @show_u = w.active_text == 'u'
+  display unless @doing_now
+end
+
+def on_color_combobox_changed(w)
+  @color = w.active_text
+  display unless @doing_now
+end
+
+def uint8_zeros_256(ch, ar)
+  d = UInt8.zeros(256, 256, 3)
+  d[true, true, ch] = UInt8.cast(ar * 256)
+  d
 end
 
 def to_image_string(ar)
-  #data = UInt8.new(256, 256, 3).fill 0
-  #data[true, true, 1] = UInt8.cast(256 - ar * 256)
-  data = hsv2rgb(ar)
+  data = case @color
+         when 'colorful'
+           hsv2rgb(ar)
+         when 'red'
+           uint8_zeros_256(0, ar)
+         when 'green'
+           uint8_zeros_256(1, ar)
+         when 'blue'
+           uint8_zeros_256(2, ar)
+         when 'reverse-red'
+           uint8_zeros_256(0, (1.0 - ar))
+         when 'reverse-green'
+           uint8_zeros_256(1, (1.0 - ar))
+         when 'reverse-blue'
+           uint8_zeros_256(2, (1.0 - ar))
+  end
   data.to_string
 end
 
@@ -133,21 +170,21 @@ end
 def hsv2rgb(h)
   i = UInt8.cast(h * 6)
   f = (h * 6.0) - i
-  p = UInt8.zeros(256,256,1)
-  v = UInt8.new(256, 256,1).fill 255
+  p = UInt8.zeros(256, 256, 1)
+  v = UInt8.new(256, 256, 1).fill 255
   q = (1.0 - f) * 256
   t = f * 256
   rgb = UInt8.zeros 256, 256, 3
   h = h.expand_dims(2)
   t = UInt8.cast(t).expand_dims(2)
-  i = UInt8.dstack([i,i,i])
+  i = UInt8.dstack([i, i, i])
   fuga = i.eq 0
-  rgb[i.eq 0] = UInt8.dstack([v,t,p])[i.eq 0]
-  rgb[i.eq 1] = UInt8.dstack([q,v,p])[i.eq 1]
-  rgb[i.eq 2] = UInt8.dstack([p,v,t])[i.eq 2]
-  rgb[i.eq 3] = UInt8.dstack([p,q,v])[i.eq 3]
-  rgb[i.eq 4] = UInt8.dstack([t,p,v])[i.eq 4]
-  rgb[i.eq 5] = UInt8.dstack([v,p,q])[i.eq 5]
+  rgb[i.eq 0] = UInt8.dstack([v, t, p])[i.eq 0]
+  rgb[i.eq 1] = UInt8.dstack([q, v, p])[i.eq 1]
+  rgb[i.eq 2] = UInt8.dstack([p, v, t])[i.eq 2]
+  rgb[i.eq 3] = UInt8.dstack([p, q, v])[i.eq 3]
+  rgb[i.eq 4] = UInt8.dstack([t, p, v])[i.eq 4]
+  rgb[i.eq 5] = UInt8.dstack([v, p, q])[i.eq 5]
   rgb
 end
 
