@@ -1,4 +1,7 @@
 # Gray-Scott
+* Ruby
+* Numo/NArray
+* Ruby/Gtk3
 
 ![screenshot](https://raw.githubusercontent.com/kojix2/Gray-Scott/master/screenshot/screenshot.png)
 
