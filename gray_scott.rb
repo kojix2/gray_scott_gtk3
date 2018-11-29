@@ -135,6 +135,14 @@ def on_color_combobox_changed(w)
   display unless @doing_now
 end
 
+def on_pen_density_value_changed(w)
+  puts w.value
+end
+
+def on_pen_radius_value_changed(w)
+  puts w.value
+end
+
 def uint8_zeros_256(ch, ar)
   d = UInt8.zeros(256, 256, 3)
   d[true, true, ch] = UInt8.cast(ar * 256)
