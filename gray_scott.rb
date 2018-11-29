@@ -188,6 +188,14 @@ def hsv2rgb(h)
   rgb
 end
 
+# MenuBar
+def show_about
+  a = Gtk::AboutDialog.new
+  a.logo   = GdkPixbuf::Pixbuf.new(file: File.join(__dir__, 'screenshot/about_icon.png'))
+  a.authors = ["kojix2"]
+  a.run
+end
+
 builder = Gtk::Builder.new
 builder.add_from_file 'gray_scott.glade'
 win = builder.get_object 'win'
