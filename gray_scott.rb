@@ -93,7 +93,7 @@ def on_k_changed(k)
   @k = k.value
 end
 
-def on_save_button_clicked
+def on_save_clicked
   dialog = Gtk::FileChooserDialog.new(title: 'PNG画像を保存',
                                       action: :save,
                                       buttons: [%i[save accept], %i[cancel cancel]])
