@@ -74,6 +74,14 @@ end
 def on_new_button_clicked
   @u.fill 1.0
   @v.fill 0.0
+  if @show_u && !@doing_now
+    dialog = Gtk::MessageDialog.new(message: "switch to v display",
+                                    type: :info,
+                                    tutton_type: :close)
+    dialog.run
+    @uv_combobox.active = 1 # v
+    dialog.destroy
+  end
   display
 end
 
@@ -119,8 +127,9 @@ end
 def on_motion(_widget, e)
   x = e.x / 2
   y = e.y / 2
-  if x > 5 && y > 5 && x < 250 && y < 250
-    @v[(y - 2)..(y + 2), (x - 2)..(x + 2)] = 0.5
+  r = @pen_radius.value
+  if x > r && y > r && x < (255-r) && y < (255-r)
+    @v[(y - r)..(y + r), (x - r)..(x + r)] = @pen_density.value
   end
   display unless @doing_now
 end
@@ -133,14 +142,6 @@ end
 def on_color_combobox_changed(w)
   @color = w.active_text
   display unless @doing_now
-end
-
-def on_pen_density_value_changed(w)
-  puts w.value
-end
-
-def on_pen_radius_value_changed(w)
-  puts w.value
 end
 
 def uint8_zeros_256(ch, ar)
@@ -208,6 +209,9 @@ builder = Gtk::Builder.new
 builder.add_from_file 'gray_scott.glade'
 win = builder.get_object 'win'
 @gimage = builder.get_object 'gimage'
+@uv_combobox = builder.get_object 'uv_combobox'
+@pen_density = builder.get_object 'pen_density'
+@pen_radius  = builder.get_object 'pen_radius'
 builder.connect_signals { |handler| method(handler) }
 
 win.show_all

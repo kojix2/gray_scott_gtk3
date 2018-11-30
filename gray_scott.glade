@@ -17,14 +17,13 @@
     <property name="value">0.5</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
-    <signal name="value-changed" handler="on_pen_density_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="pen_radius">
-    <property name="upper">1</property>
+    <property name="lower">1</property>
+    <property name="upper">16</property>
     <property name="value">0.5</property>
-    <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10000000000000001</property>
-    <signal name="value-changed" handler="on_pen_radius_value_changed" swapped="no"/>
+    <property name="step_increment">1</property>
+    <property name="page_increment">2</property>
   </object>
   <object class="GtkWindow" id="win">
     <property name="can_focus">False</property>
@@ -274,6 +273,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="tooltip_text" translatable="yes">Clear u and v</property>
                 <property name="margin_left">5</property>
                 <property name="margin_right">5</property>
                 <property name="margin_top">5</property>
@@ -293,7 +293,7 @@
               <object class="GtkSwitch" id="switch">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="tooltip_text" translatable="yes">スタート</property>
+                <property name="tooltip_text" translatable="yes">Start or Stop</property>
                 <property name="margin_left">5</property>
                 <property name="margin_right">5</property>
                 <property name="margin_top">5</property>
@@ -318,7 +318,7 @@
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
                 <property name="use_stock">True</property>
-                <property name="image_position">bottom</property>
+                <property name="image_position">top</property>
                 <property name="always_show_image">True</property>
                 <signal name="clicked" handler="on_save_button_clicked" swapped="no"/>
               </object>
@@ -375,21 +375,6 @@
                     <property name="can_focus">False</property>
                     <property name="active">0</property>
                     <items>
-                      <item translatable="yes">u</item>
-                      <item translatable="yes">v</item>
-                    </items>
-                    <signal name="changed" handler="on_uv_combobox_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="active">0</property>
-                    <items>
                       <item translatable="yes">colorful</item>
                       <item translatable="yes">red</item>
                       <item translatable="yes">green</item>
@@ -399,6 +384,21 @@
                       <item translatable="yes">reverse-blue</item>
                     </items>
                     <signal name="changed" handler="on_color_combobox_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="uv_combobox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="active">0</property>
+                    <items>
+                      <item translatable="yes">u</item>
+                      <item translatable="yes">v</item>
+                    </items>
+                    <signal name="changed" handler="on_uv_combobox_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="position">0</property>
@@ -443,6 +443,7 @@
                             <property name="can_focus">True</property>
                             <property name="focus_on_click">False</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">pen density</property>
                             <property name="relief">none</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">pen_density</property>
@@ -475,6 +476,7 @@
                             <property name="can_focus">True</property>
                             <property name="focus_on_click">False</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">pen radius</property>
                             <property name="relief">none</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">pen_radius</property>
@@ -498,6 +500,7 @@
                             </child>
                           </object>
                           <packing>
+                            <property name="pack_type">end</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
