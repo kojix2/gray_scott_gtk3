@@ -67,11 +67,11 @@ def update_u_v(u = @u, v = @v)
   @v = v
 end
 
-def on_window_destroy
+def main_quit
   Gtk.main_quit
 end
 
-def on_new_button_clicked
+def on_new_clicked
   @u.fill 1.0
   @v.fill 0.0
   if @show_u && !@doing_now

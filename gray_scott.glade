@@ -30,7 +30,7 @@
     <property name="has_tooltip">True</property>
     <property name="title" translatable="yes">Gray-Scott model</property>
     <property name="resizable">False</property>
-    <signal name="destroy" handler="on_window_destroy" swapped="no"/>
+    <signal name="destroy" handler="main_quit" swapped="no"/>
     <child>
       <placeholder/>
     </child>
@@ -60,6 +60,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_new_clicked" swapped="no"/>
                       </object>
                     </child>
                     <child>
@@ -102,6 +103,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="main_quit" swapped="no"/>
                       </object>
                     </child>
                   </object>
@@ -281,7 +283,7 @@
                 <property name="use_stock">True</property>
                 <property name="image_position">bottom</property>
                 <property name="always_show_image">True</property>
-                <signal name="clicked" handler="on_new_button_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_new_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -370,6 +372,21 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
+                  <object class="GtkComboBoxText" id="uv_combobox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="active">0</property>
+                    <items>
+                      <item translatable="yes">u</item>
+                      <item translatable="yes">v</item>
+                    </items>
+                    <signal name="changed" handler="on_uv_combobox_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkComboBoxText">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -384,21 +401,6 @@
                       <item translatable="yes">reverse-blue</item>
                     </items>
                     <signal name="changed" handler="on_color_combobox_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="uv_combobox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="active">0</property>
-                    <items>
-                      <item translatable="yes">u</item>
-                      <item translatable="yes">v</item>
-                    </items>
-                    <signal name="changed" handler="on_uv_combobox_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="position">0</property>
