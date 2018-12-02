@@ -200,9 +200,11 @@ end
 # MenuBar
 def show_about
   a = Gtk::AboutDialog.new
+  a.program_name = "Gray-Scott"
   a.logo   = GdkPixbuf::Pixbuf.new(file: File.join(__dir__, 'screenshot/about_icon.png'))
   a.authors = ["kojix2"]
   a.run
+  a.destroy
 end
 
 builder = Gtk::Builder.new
