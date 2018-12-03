@@ -3,7 +3,7 @@ B = (0..-2).freeze
 T = true
 
 def laplacian(uv)
-  l_uv = SFloat.zeros @width, @height
+  l_uv = uv.new_zeros
   l_uv[A, T]._ + uv[B, T]
   l_uv[T, A]._ + uv[T, B]
 
