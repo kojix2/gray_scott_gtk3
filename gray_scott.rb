@@ -20,16 +20,18 @@ MSEC = msec
 # パラメータ
 Dx = 0.01
 Dt = 1
+
 # Diffusion rates
 Du = 2e-5
 Dv = 1e-5
+
 # Feed rate
 @f = 0.04
 # Kill rate
 @k = 0.06
 
 # 初期化
-@u = SFloat.zeros 256, 256
+@u = SFloat.ones 256, 256
 @v = SFloat.zeros 256, 256
 @show_u = true
 @color = 'colorful'
@@ -75,10 +77,10 @@ def main_quit
 end
 
 def on_new_clicked
-  @u.fill 0.0
+  @u.fill 1.0
   @v.fill 0.0
   if @show_u && !@doing_now
-    dialog = Gtk::MessageDialog.new(message: "display V density",
+    dialog = Gtk::MessageDialog.new(message: 'display V density',
                                     type: :info,
                                     tutton_type: :close)
     dialog.run
@@ -131,7 +133,7 @@ def on_motion(_widget, e)
   x = e.x / 2
   y = e.y / 2
   r = @pen_radius.value
-  if x > r && y > r && x < (255-r) && y < (255-r)
+  if x > r && y > r && x < (255 - r) && y < (255 - r)
     @v[(y - r)..(y + r), (x - r)..(x + r)] = @pen_density.value
   end
   display unless @doing_now
@@ -205,20 +207,20 @@ end
 # MenuBar
 def show_about
   a = Gtk::AboutDialog.new
-  a.program_name = "Gray-Scott"
-  a.logo   = GdkPixbuf::Pixbuf.new(file: File.join(__dir__, 'screenshot/about_icon.png'))
-  a.authors = ["kojix2"]
+  a.program_name = 'Gray-Scott'
+  a.logo = GdkPixbuf::Pixbuf.new(file: File.join(__dir__, 'screenshot/about_icon.png'))
+  a.authors = ['kojix2']
   a.run
   a.destroy
 end
 
 builder = Gtk::Builder.new
 builder.add_from_file 'gray_scott.glade'
-@win = builder.get_object 'win'
-@gimage = builder.get_object 'gimage'
-@uv_combobox = builder.get_object 'uv_combobox'
-@pen_density = builder.get_object 'pen_density'
-@pen_radius  = builder.get_object 'pen_radius'
+
+object_names = %w[win gimage uv_combobox pen_density pen_radius]
+object_names.each do |s|
+  instance_variable_set('@' + s.to_s, builder.get_object(s))
+end
 builder.connect_signals { |handler| method(handler) }
 
 @win.show_all
