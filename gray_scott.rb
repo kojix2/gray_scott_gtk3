@@ -154,6 +154,8 @@ def to_image_string(ar)
   data = case @color
          when 'colorful'
            hsv2rgb(ar)
+         when 'reverse-colorful'
+           hsv2rgb(1.0 - ar)
          when 'red'
            uint8_zeros_256(0, ar)
          when 'green'
@@ -209,12 +211,12 @@ end
 
 builder = Gtk::Builder.new
 builder.add_from_file 'gray_scott.glade'
-win = builder.get_object 'win'
+@win = builder.get_object 'win'
 @gimage = builder.get_object 'gimage'
 @uv_combobox = builder.get_object 'uv_combobox'
 @pen_density = builder.get_object 'pen_density'
 @pen_radius  = builder.get_object 'pen_radius'
 builder.connect_signals { |handler| method(handler) }
 
-win.show_all
+@win.show_all
 Gtk.main
