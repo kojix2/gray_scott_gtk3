@@ -32,10 +32,7 @@ end
 
 def on_color_combobox_changed(w)
   @color = w.active_text
-  legend = (SFloat.new(1,512).seq * SFloat.ones(24,1)) / 512
-  data = colorize(legend, @color).to_string
-  pixbuf = GdkPixbuf::Pixbuf.new data: data, width: 512, height: 24
-  @legend_image.pixbuf = pixbuf
+  display_legend
   display unless @doing_now
 end
 

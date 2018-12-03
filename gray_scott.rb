@@ -44,6 +44,13 @@ def display
   @gimage.pixbuf = to_pixbuf(@show_u ? @u : @v)
 end
 
+def display_legend
+  legend = (SFloat.new(1,512).seq * SFloat.ones(24,1)) / 512
+  data = colorize(legend, @color).to_string
+  pixbuf = GdkPixbuf::Pixbuf.new data: data, width: 512, height: 24
+  @legend_image.pixbuf = pixbuf
+end
+
 def on_execute_toggled(widget)
   @doing_now = widget.active?
   if @doing_now
@@ -82,6 +89,7 @@ def on_new_clicked
     @uv_combobox.active = 1 # v
     dialog.destroy
   end
+  display_legend
   display
 end
 
