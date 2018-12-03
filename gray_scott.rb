@@ -20,13 +20,16 @@ MSEC = msec
 # パラメータ
 Dx = 0.01
 Dt = 1
+# Diffusion rates
 Du = 2e-5
 Dv = 1e-5
+# Feed rate
 @f = 0.04
+# Kill rate
 @k = 0.06
 
 # 初期化
-@u = SFloat.ones 256, 256
+@u = SFloat.zeros 256, 256
 @v = SFloat.zeros 256, 256
 @show_u = true
 @color = 'colorful'
@@ -72,10 +75,10 @@ def main_quit
 end
 
 def on_new_clicked
-  @u.fill 1.0
+  @u.fill 0.0
   @v.fill 0.0
   if @show_u && !@doing_now
-    dialog = Gtk::MessageDialog.new(message: "switch to v display",
+    dialog = Gtk::MessageDialog.new(message: "display V density",
                                     type: :info,
                                     tutton_type: :close)
     dialog.run
@@ -113,9 +116,9 @@ def display
                    end
 end
 
-def on_switch_changed(_w, active)
-  @doing_now = active
-  if active
+def on_execute_toggled(widget)
+  @doing_now = widget.active?
+  if @doing_now
     GLib::Timeout.add MSEC do
       update_u_v
       display
@@ -153,21 +156,21 @@ end
 def to_image_string(ar)
   data = case @color
          when 'colorful'
-           hsv2rgb(ar)
-         when 'reverse-colorful'
            hsv2rgb(1.0 - ar)
+         when 'reverse-colorful'
+           hsv2rgb(ar)
          when 'red'
-           uint8_zeros_256(0, ar)
-         when 'green'
-           uint8_zeros_256(1, ar)
-         when 'blue'
-           uint8_zeros_256(2, ar)
-         when 'reverse-red'
            uint8_zeros_256(0, (1.0 - ar))
-         when 'reverse-green'
+         when 'green'
            uint8_zeros_256(1, (1.0 - ar))
-         when 'reverse-blue'
+         when 'blue'
            uint8_zeros_256(2, (1.0 - ar))
+         when 'reverse-red'
+           uint8_zeros_256(0, ar)
+         when 'reverse-green'
+           uint8_zeros_256(1, ar)
+         when 'reverse-blue'
+           uint8_zeros_256(2, ar)
   end
   data.to_string
 end
