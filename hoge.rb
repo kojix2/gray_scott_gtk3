@@ -32,58 +32,58 @@ end
 
 def on_color_combobox_changed(w)
   @color = w.active_text
-  # string = SFloat.new(512,12).seq / (512*12)
-  # pixbuf = GdkPixbuf::Pixbuf.new data: string, width: 24, height: 512
-  # @legend_image.pixbuf = pixbuf
+  legend = (SFloat.new(1,512).seq * SFloat.ones(24,1)) / 512
+  data = colorize(legend, @color).to_string
+  pixbuf = GdkPixbuf::Pixbuf.new data: data, width: 512, height: 24
+  @legend_image.pixbuf = pixbuf
   display unless @doing_now
 end
 
 def uint8_zeros_256(ch, ar)
-  d = UInt8.zeros(@height, @width, 3)
+  d = UInt8.zeros(*ar.shape, 3)
   d[true, true, ch] = UInt8.cast(ar * 256)
   d
 end
 
-def to_image_string(ar)
-  data = case @color
-         when 'colorful'
-           hsv2rgb(1.0 - ar)
-         when 'reverse-colorful'
-           hsv2rgb(ar)
-         when 'red'
-           uint8_zeros_256(0, (1.0 - ar))
-         when 'green'
-           uint8_zeros_256(1, (1.0 - ar))
-         when 'blue'
-           uint8_zeros_256(2, (1.0 - ar))
-         when 'reverse-red'
-           uint8_zeros_256(0, ar)
-         when 'reverse-green'
-           uint8_zeros_256(1, ar)
-         when 'reverse-blue'
-           uint8_zeros_256(2, ar)
+def colorize(ar, color_type)
+  case color_type
+  when 'colorful'
+    hsv2rgb(1.0 - ar)
+  when 'reverse-colorful'
+    hsv2rgb(ar)
+  when 'red'
+    uint8_zeros_256(0, (1.0 - ar))
+  when 'green'
+    uint8_zeros_256(1, (1.0 - ar))
+  when 'blue'
+    uint8_zeros_256(2, (1.0 - ar))
+  when 'reverse-red'
+    uint8_zeros_256(0, ar)
+  when 'reverse-green'
+    uint8_zeros_256(1, ar)
+  when 'reverse-blue'
+    uint8_zeros_256(2, ar)
   end
-  data.to_string
 end
 
-def to_pixbuf(ar)
-  string = to_image_string(ar)
-  pixbuf = GdkPixbuf::Pixbuf.new data: string, width: @width, height: @height
+def to_pixbuf(ar, color_type = @color)
+  data = colorize(ar, color_type).to_string
+  height, width = ar.shape
+  pixbuf = GdkPixbuf::Pixbuf.new data: data, width: width, height: height
   pixbuf.scale_simple 512, 512, :bilinear
 end
 
 def hsv2rgb(h)
+  height, width = h.shape
   i = UInt8.cast(h * 6)
   f = (h * 6.0) - i
-  p = UInt8.zeros(@height, @width, 1)
-  v = UInt8.new(@height, @width, 1).fill 255
+  p = UInt8.zeros height, width, 1
+  v = UInt8.new(height, width, 1).fill 255
   q = (1.0 - f) * 256
   t = f * 256
-  rgb = UInt8.zeros @height, @width, 3
-  h = h.expand_dims(2)
+  rgb = UInt8.zeros height, width, 3
   t = UInt8.cast(t).expand_dims(2)
   i = UInt8.dstack([i, i, i])
-  fuga = i.eq 0
   rgb[i.eq 0] = UInt8.dstack([v, t, p])[i.eq 0]
   rgb[i.eq 1] = UInt8.dstack([q, v, p])[i.eq 1]
   rgb[i.eq 2] = UInt8.dstack([p, v, t])[i.eq 2]
