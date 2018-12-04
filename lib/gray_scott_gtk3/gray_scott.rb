@@ -4,7 +4,7 @@ module GrayScottGtk3
     attr_accessor :resource_dir, :height, :width, :model
 
     def initialize(dir)
-      resource_dir = dir
+      @resource_dir = dir
       @height = 256
       @width = 256
       @model = Model.new(height: height, width: width)
@@ -29,7 +29,7 @@ module GrayScottGtk3
       a.program_name = 'Gray-Scott'
       a.logo = GdkPixbuf::Pixbuf.new(file: File.join(resource_dir, 'about_icon.png'))
       a.authors = ['kojix2']
-      # version
+      a.version = GrayScottGtk3::VERSION
       a.run
       a.destroy
     end
