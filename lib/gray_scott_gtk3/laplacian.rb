@@ -1,5 +1,4 @@
 module GrayScottGtk3
-
   A = (1..-1).freeze
   B = (0..-2).freeze
   T = true
@@ -22,5 +21,4 @@ module GrayScottGtk3
     l_uv._ / (Dx * Dx)
     l_uv
   end
-
 end
