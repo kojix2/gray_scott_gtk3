@@ -15,7 +15,7 @@ module GrayScottGtk3
     Du = 2e-5
     Dv = 1e-5
 
-    def initialize(width: 256, height: )
+    def initialize(width: 256, height: 256)
       # Feed rate
       @f = 0.04
       # Kill rate
@@ -28,9 +28,14 @@ module GrayScottGtk3
       @color = 'colorful'
     end
 
+    def clear
+      @u.fill 1.0
+      @v.fill 0.0
+    end
+
     def update_u_v(u = @u, v = @v)
-      l_u = laplacian u
-      l_v = laplacian v
+      l_u = SFloat.laplacian2d u
+      l_v = SFloat.laplacian2d v
 
       uvv = u * v * v
       dudt = Du * l_u - uvv + @f * (1.0 - u)
