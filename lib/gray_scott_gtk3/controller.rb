@@ -47,10 +47,10 @@ module GrayScottGtk3
     end
 
     def display_legend
-      legend = (SFloat.new(1, 512).seq * SFloat.ones(24, 1)) / 512
+      legend = (SFloat.new(1, 512).seq * SFloat.ones(16, 1)) / 512
       data = colorize(legend, @color)
       string = data.to_string
-      pixbuf = GdkPixbuf::Pixbuf.new data: string, width: 512, height: 24
+      pixbuf = GdkPixbuf::Pixbuf.new data: string, width: 512, height: 16
       @legend_image.pixbuf = pixbuf
     end
 
