@@ -1,5 +1,5 @@
 module GrayScottGtk3
-  class ViewController
+  class Controller
     include ShortNumo
     attr_accessor :resource_dir, :height, :width, :model
 
@@ -104,7 +104,7 @@ module GrayScottGtk3
     end
 
     def on_uv_combobox_changed(w)
-      @show_u = w.active_text == 'u'
+      @show_u = w.active_text == 'U'
       display unless doing_now?
     end
 
