@@ -14,7 +14,7 @@
 
     $ grayscott 40 # msec
 
-# Known issue
+## Known issue
 
 Glib::Timeout.add(number_of_seconds)
 If processing can not be completed within the time, it will not be displayed. 
