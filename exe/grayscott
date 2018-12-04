@@ -4,33 +4,19 @@ require "gray_scott_gtk3"
 
 # Timeout用秒数 MSEC 設定
 if ARGV[0]
-  msec = ARGV[0].to_i
+  module GrayScottGtk3
+    MSEC = ARGV[0].to_i
+  end
 else
-  puts 'please specify command-line argument. For example `ruby gray_scott.rb 40`'
+  puts 'please specify command-line argument. For example `grayscott 40`'
   exit
 end
 
 module GrayScottGtk3 
-  MSEC = msec
-
   class << self
     def run
-      builder = Gtk::Builder.new
-      builder.add_from_file 'gray_scott.glade'
-
-      # アプリケーションクラスの生成
-
-      # クラスの中にインスタンス変数を生やすべき
-      %w[win gimage legend_image uv_combobox pen_density pen_radius].each do |s|
-        instance_variable_set('@' + s, builder.get_object(s))
-      end
-
-
-      # conncet_signals するメソッドはクラスの所属なので、lambdaで接続
-      builder.connect_signals { |handler| GrayScottGtk3.instance_method(handler) }
-
-      @win.show_all
-      Gtk.main
+      xml_path = File.expand_path('../resources/', __dir__)
+      ViewController.new xml_path
     end
   end
 end
