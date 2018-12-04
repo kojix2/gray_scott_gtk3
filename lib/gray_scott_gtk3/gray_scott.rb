@@ -10,17 +10,6 @@ module GrayScottGtk3
   @height = 256
   @width = 256
 
-  require './hoge'
-
-  # Timeout用秒数 MSEC 設定
-  if ARGV[0]
-    msec = ARGV[0].to_i
-  else
-    puts 'please specify command-line argument. For example `ruby gray_scott.rb 40`'
-    exit
-  end
-  MSEC = msec
-
   def show_about
     a = Gtk::AboutDialog.new
     a.program_name = 'Gray-Scott'
@@ -105,16 +94,5 @@ module GrayScottGtk3
     end
     display unless @doing_now
   end
-
-  builder = Gtk::Builder.new
-  builder.add_from_file 'gray_scott.glade'
-
-  %w[win gimage legend_image uv_combobox pen_density pen_radius].each do |s|
-    instance_variable_set('@' + s.to_s, builder.get_object(s))
-  end
-  builder.connect_signals { |handler| method(handler) }
-
-  @win.show_all
-  Gtk.main
 
 end

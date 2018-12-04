@@ -6,12 +6,12 @@ require "gray_scott_gtk3/version"
 Gem::Specification.new do |spec|
   spec.name          = "gray_scott_gtk3"
   spec.version       = GrayScottGtk3::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["TODO: Write your email address"]
+  spec.authors       = ["kojix2"]
+  spec.email         = ["2xijok@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Gray-Scott model.}
+  spec.description   = %q{Gray-Scott model.}
+  spec.homepage      = "https://github.com/kojix2/Gray-Scott"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -34,6 +34,9 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+
+  spec.add_dependency "numo-narray"
+  spec.add_dependency "gtk3"
 
   spec.add_development_dependency "bundler", "~> 1.17"
   spec.add_development_dependency "rake", "~> 10.0"
