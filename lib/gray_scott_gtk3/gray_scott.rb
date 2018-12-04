@@ -1,10 +1,11 @@
 module GrayScottGtk3
   class ViewController
     def initialize(resource_dir)
+      @resource_dir = resource_dir
       @height = 256
       @width = 256
       builder = Gtk::Builder.new
-      builder.add_from_file File.join(resource_dir, "gray_scott.glade")
+      builder.add_from_file File.join(@resource_dir, "gray_scott.glade")
 
       %w[win gimage legend_image uv_combobox pen_density pen_radius].each do |s|
         instance_variable_set('@' + s, builder.get_object(s))
@@ -19,7 +20,7 @@ module GrayScottGtk3
     def show_about
       a = Gtk::AboutDialog.new
       a.program_name = 'Gray-Scott'
-      a.logo = GdkPixbuf::Pixbuf.new(file: File.join(resource_dir, 'about_icon.png'))
+      a.logo = GdkPixbuf::Pixbuf.new(file: File.join(@resource_dir, 'about_icon.png'))
       a.authors = ['kojix2']
       a.run
       a.destroy
