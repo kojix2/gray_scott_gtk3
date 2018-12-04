@@ -40,6 +40,5 @@ module GrayScottGtk3
       @u = u
       @v = v
     end
-
   end
 end

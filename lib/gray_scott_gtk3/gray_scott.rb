@@ -63,17 +63,17 @@ module GrayScottGtk3
     end
 
     def execute
-        @doing_now = true
-        GLib::Timeout.add MSEC do
-          model.update
-          display
-          @doing_now
-        end
+      @doing_now = true
+      GLib::Timeout.add MSEC do
+        model.update
+        display
+        @doing_now
+      end
     end
 
     def on_save_clicked
       @doing_now = false
-      
+
       dialog = Gtk::FileChooserDialog.new(title: 'PNG画像を保存',
                                           action: :save,
                                           buttons: [%i[save accept], %i[cancel cancel]])
