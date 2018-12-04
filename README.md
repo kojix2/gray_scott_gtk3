@@ -8,8 +8,6 @@
 * Numo/NArray
 * Ruby/Gtk3
 
-Install it yourself as:
-
     $ gem install gray_scott_gtk3
 
 ## Usage
