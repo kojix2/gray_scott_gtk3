@@ -15,7 +15,7 @@ module GrayScottGtk3
   class << self
     def run
       xml_path = File.expand_path('../resources/', __dir__)
-      ViewController.new xml_path
+      Controller.new xml_path
     end
   end
 end
