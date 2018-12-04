@@ -11,7 +11,7 @@ module ShortNumo
 end
 
 require 'gray_scott_gtk3/model'
-require 'gray_scott_gtk3/gray_scott'
+require 'gray_scott_gtk3/controller'
 require 'gray_scott_gtk3/laplacian'
 require 'gray_scott_gtk3/version'
 

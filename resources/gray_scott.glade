@@ -141,7 +141,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Clear u and v</property>
                 <property name="use_stock">True</property>
                 <property name="image_position">bottom</property>
                 <property name="always_show_image">True</property>
@@ -365,6 +364,21 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
+                  <object class="GtkComboBoxText" id="uv_combobox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="active">0</property>
+                    <items>
+                      <item translatable="yes">U</item>
+                      <item translatable="yes">V</item>
+                    </items>
+                    <signal name="changed" handler="on_uv_combobox_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkComboBoxText">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -380,21 +394,6 @@
                       <item translatable="yes">reverse-blue</item>
                     </items>
                     <signal name="changed" handler="on_color_combobox_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="uv_combobox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="active">0</property>
-                    <items>
-                      <item translatable="yes">u</item>
-                      <item translatable="yes">v</item>
-                    </items>
-                    <signal name="changed" handler="on_uv_combobox_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="position">0</property>
@@ -439,10 +438,10 @@
                             <property name="can_focus">True</property>
                             <property name="focus_on_click">False</property>
                             <property name="receives_default">True</property>
-                            <property name="tooltip_text" translatable="yes">pen radius</property>
+                            <property name="tooltip_text" translatable="yes">pen density</property>
                             <property name="relief">none</property>
                             <property name="orientation">vertical</property>
-                            <property name="adjustment">pen_radius</property>
+                            <property name="adjustment">pen_density</property>
                             <property name="icons">applications-graphics
 applications-graphics
 applications-graphics</property>
@@ -475,10 +474,10 @@ applications-graphics</property>
                             <property name="can_focus">True</property>
                             <property name="focus_on_click">False</property>
                             <property name="receives_default">True</property>
-                            <property name="tooltip_text" translatable="yes">pen density</property>
+                            <property name="tooltip_text" translatable="yes">pen radius</property>
                             <property name="relief">none</property>
                             <property name="orientation">vertical</property>
-                            <property name="adjustment">pen_density</property>
+                            <property name="adjustment">pen_radius</property>
                             <property name="icons">applications-graphics
 applications-graphics
 applications-graphics</property>

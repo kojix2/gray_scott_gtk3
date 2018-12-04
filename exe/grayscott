@@ -2,7 +2,6 @@
 
 require "gray_scott_gtk3"
 
-# Timeout用秒数 MSEC 設定
 if ARGV[0]
   module GrayScottGtk3
     MSEC = ARGV[0].to_i
