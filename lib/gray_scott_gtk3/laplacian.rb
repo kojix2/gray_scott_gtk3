@@ -1,11 +1,11 @@
 module Numo
-  class NArray
+  class SFloat
     # To avoid mistakes
     A = (1..-1).freeze
     B = (0..-2).freeze
     T = true
 
-    def laplacian2d(uv)
+    def self.laplacian2d(uv, dx)
       l_uv = uv.new_zeros
       l_uv[A, T]._ + uv[B, T]
       l_uv[T, A]._ + uv[T, B]
@@ -20,7 +20,7 @@ module Numo
       l_uv[T, -1]._ + uv[T, 0]
 
       l_uv._ - (uv * 4)
-      l_uv._ / (Dx * Dx)
+      l_uv._ / (dx * dx)
       l_uv
     end
   end

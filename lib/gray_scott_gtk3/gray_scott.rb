@@ -1,12 +1,15 @@
 module GrayScottGtk3
   class ViewController
+    include ShortNumo
     attr_accessor :resource_dir, :height, :width, :model
 
     def initialize(dir)
       resource_dir = dir
-      height = 256
-      width = 256
+      @height = 256
+      @width = 256
       @model = Model.new(height: height, width: width)
+      @show_u = true
+      @color = 'colorful'
 
       builder = Gtk::Builder.new
       builder.add_from_file File.join(resource_dir, 'gray_scott.glade')
@@ -44,24 +47,33 @@ module GrayScottGtk3
     end
 
     def display_legend
-      legend = (Numo::SFloat.new(1, 512).seq * Numo::SFloat.ones(24, 1)) / 512
-      data = colorize(legend, @color).to_string
-      pixbuf = GdkPixbuf::Pixbuf.new data: data, width: 512, height: 24
+      legend = (SFloat.new(1, 512).seq * SFloat.ones(24, 1)) / 512
+      data = colorize(legend, @color)
+      string = data.to_string
+      pixbuf = GdkPixbuf::Pixbuf.new data: string, width: 512, height: 24
       @legend_image.pixbuf = pixbuf
     end
 
     def on_execute_toggled(widget)
-      @doing_now = widget.active?
-      if @doing_now
-        GLib::Timeout.add MSEC do
-          update_u_v
-          display
-          @doing_now
-        end
+      if widget.active?
+        execute
+      else
+        @doing_now = false
       end
     end
 
+    def execute
+        @doing_now = true
+        GLib::Timeout.add MSEC do
+          model.update
+          display
+          @doing_now
+        end
+    end
+
     def on_save_clicked
+      @doing_now = false
+      
       dialog = Gtk::FileChooserDialog.new(title: 'PNG画像を保存',
                                           action: :save,
                                           buttons: [%i[save accept], %i[cancel cancel]])
@@ -93,13 +105,13 @@ module GrayScottGtk3
 
     def on_uv_combobox_changed(w)
       @show_u = w.active_text == 'u'
-      display unless @doing_now
+      display unless doing_now?
     end
 
     def on_color_combobox_changed(w)
       @color = w.active_text
       display_legend
-      display unless @doing_now
+      display unless doing_now?
     end
 
     def on_motion(_widget, e)
@@ -107,9 +119,9 @@ module GrayScottGtk3
       y = e.y * height / 512
       r = @pen_radius.value
       if x > r && y > r && x < (height - 1 - r) && y < (width - 1 - r)
-        @v[(y - r)..(y + r), (x - r)..(x + r)] = @pen_density.value
+        model.v[(y - r)..(y + r), (x - r)..(x + r)] = @pen_density.value
       end
-      display unless @doing_now
+      display unless doing_now?
     end
 
     def colorize(ar, color_type)
@@ -131,6 +143,43 @@ module GrayScottGtk3
       when 'reverse-blue'
         uint8_zeros_256(2, ar)
       end
+    end
+
+    def uint8_zeros_256(ch, ar)
+      d = UInt8.zeros(*ar.shape, 3)
+      d[true, true, ch] = UInt8.cast(ar * 256)
+      d
+    end
+
+    def to_pixbuf(ar, color_type = @color)
+      data = colorize(ar, color_type).to_string
+      height, width = ar.shape
+      pixbuf = GdkPixbuf::Pixbuf.new data: data, width: width, height: height
+      pixbuf.scale_simple 512, 512, :bilinear
+    end
+
+    def hsv2rgb(h)
+      height, width = h.shape
+      i = UInt8.cast(h * 6)
+      f = (h * 6.0) - i
+      p = UInt8.zeros height, width, 1
+      v = UInt8.new(height, width, 1).fill 255
+      q = (1.0 - f) * 256
+      t = f * 256
+      rgb = UInt8.zeros height, width, 3
+      t = UInt8.cast(t).expand_dims(2)
+      i = UInt8.dstack([i, i, i])
+      rgb[i.eq 0] = UInt8.dstack([v, t, p])[i.eq 0]
+      rgb[i.eq 1] = UInt8.dstack([q, v, p])[i.eq 1]
+      rgb[i.eq 2] = UInt8.dstack([p, v, t])[i.eq 2]
+      rgb[i.eq 3] = UInt8.dstack([p, q, v])[i.eq 3]
+      rgb[i.eq 4] = UInt8.dstack([t, p, v])[i.eq 4]
+      rgb[i.eq 5] = UInt8.dstack([v, p, q])[i.eq 5]
+      rgb
+    end
+
+    def doing_now?
+      @doing_now
     end
   end
 end
