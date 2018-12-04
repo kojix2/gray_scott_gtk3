@@ -2,11 +2,13 @@
 
 ![screenshot](https://raw.githubusercontent.com/kojix2/Gray-Scott/master/screenshot/screenshot.png)
 
-## Installation
+## Requirements
 
 * Ruby
 * Numo/NArray
 * Ruby/Gtk3
+
+## Installation
 
     $ gem install gray_scott_gtk3
 
