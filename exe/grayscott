@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require "gray_scott_gtk3"
+
+app = GrayScottGtk3.application
+
+app.signal_connect :activate do |application|
+  window = GrayScottGtk3::ApplicationWindow.new application
+  window.present
+end
+
+app.run

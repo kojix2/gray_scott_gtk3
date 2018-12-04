@@ -1,3 +1,0 @@
-#!/usr/bin/env ruby
-
-require "gray_scott_gtk3"
