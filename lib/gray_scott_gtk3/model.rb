@@ -52,27 +52,6 @@ module GrayScottGtk3
       d
     end
 
-    def colorize(ar, color_type)
-      case color_type
-      when 'colorful'
-        hsv2rgb(1.0 - ar)
-      when 'reverse-colorful'
-        hsv2rgb(ar)
-      when 'red'
-        uint8_zeros_256(0, (1.0 - ar))
-      when 'green'
-        uint8_zeros_256(1, (1.0 - ar))
-      when 'blue'
-        uint8_zeros_256(2, (1.0 - ar))
-      when 'reverse-red'
-        uint8_zeros_256(0, ar)
-      when 'reverse-green'
-        uint8_zeros_256(1, ar)
-      when 'reverse-blue'
-        uint8_zeros_256(2, ar)
-      end
-    end
-
     def to_pixbuf(ar, color_type = @color)
       data = colorize(ar, color_type).to_string
       height, width = ar.shape
