@@ -5,7 +5,7 @@ module Numo
     B = (0..-2).freeze
     T = true
 
-    def self.laplacian2d(uv, dx)
+    def self._laplacian2d(uv, dx)
       l_uv = uv.new_zeros
       l_uv[A, T]._ + uv[B, T]
       l_uv[T, A]._ + uv[T, B]
