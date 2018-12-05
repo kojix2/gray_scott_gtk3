@@ -24,4 +24,4 @@ In this case, you should increase the number of seconds.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kojix2/gray_scott_gtk3.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kojix2/Gray-Scott.
