@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "numo-narray"
+  # RSVG2: May not work with gtk3 alone
   spec.add_dependency "rsvg2"
   spec.add_dependency "gtk3"
 
