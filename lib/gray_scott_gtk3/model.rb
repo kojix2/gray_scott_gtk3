@@ -30,8 +30,8 @@ module GrayScottGtk3
       l_v = SFloat._laplacian2d v, Dx
 
       uvv = u * v * v
-      dudt = Du * l_u - uvv + @f * (1.0 - u)
-      dvdt = Dv * l_v + uvv - (@f + @k) * v
+      dudt = Du * l_u - uvv + f * (1.0 - u)
+      dvdt = Dv * l_v + uvv - (f + k) * v
       u._ + (Dt * dudt)
       v._ + (Dt * dvdt)
     end
