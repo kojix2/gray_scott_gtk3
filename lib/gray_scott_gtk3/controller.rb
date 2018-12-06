@@ -1,3 +1,5 @@
+require_relative 'controller/aboutdialog'
+
 module GrayScottGtk3
   class Controller
     include ShortNumo
@@ -25,13 +27,7 @@ module GrayScottGtk3
     end
 
     def show_about
-      a = Gtk::AboutDialog.new
-      a.program_name = 'Gray-Scott'
-      a.logo = GdkPixbuf::Pixbuf.new(file: File.join(resource_dir, 'about_icon.png'))
-      a.authors = ['kojix2']
-      a.version = GrayScottGtk3::VERSION
-      a.run
-      a.destroy
+      AboutDialog.new resource_dir
     end
 
     def on_f_changed(f)
