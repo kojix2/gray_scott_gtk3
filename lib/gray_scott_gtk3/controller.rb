@@ -114,7 +114,7 @@ module GrayScottGtk3
       x = e.x * width / 512
       y = e.y * height / 512
       r = @pen_radius.value
-      if x > r && y > r && x < (height - 1 - r) && y < (width - 1 - r)
+      if x > r && y > r && x < (width - 1 - r) && y < (height - 1 - r)
         model.v[(y - r)..(y + r), (x - r)..(x + r)] = @pen_density.value
       end
       display unless doing_now?
