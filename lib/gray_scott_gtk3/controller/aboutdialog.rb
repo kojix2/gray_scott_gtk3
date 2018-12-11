@@ -1,6 +1,6 @@
 module GrayScottGtk3
   class Controller
-    class AboutDialog 
+    class AboutDialog
       def initialize(resource_dir)
         @a = Gtk::AboutDialog.new
         @a.program_name = 'Gray-Scott'

@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require "gray_scott_gtk3"
+require 'gray_scott_gtk3'
 
 if ARGV[0]
   module GrayScottGtk3
@@ -11,7 +11,7 @@ else
   exit
 end
 
-module GrayScottGtk3 
+module GrayScottGtk3
   class << self
     def run
       xml_path = File.expand_path('../resources/', __dir__)
