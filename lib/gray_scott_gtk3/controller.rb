@@ -10,7 +10,7 @@ module GrayScottGtk3
       @height = height
       @width = width
       @model = Model.new(height: height, width: width)
-      @show_u = true
+      @show_u = false
       @color = 'colorful'
 
       builder = Gtk::Builder.new
@@ -23,6 +23,7 @@ module GrayScottGtk3
       builder.connect_signals { |handler| method(handler) }
 
       @win.show_all # window
+      on_new_clicked
       Gtk.main
     end
 
@@ -87,14 +88,6 @@ module GrayScottGtk3
 
     def on_new_clicked
       model.clear
-      if @show_u && !@doing_now
-        dialog = Gtk::MessageDialog.new(message: 'display V density',
-                                        type: :info,
-                                        tutton_type: :close)
-        dialog.run
-        @uv_combobox.active = 1 # v
-        dialog.destroy
-      end
       display_legend
       display
     end
