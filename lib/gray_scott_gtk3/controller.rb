@@ -5,10 +5,10 @@ module GrayScottGtk3
     include ShortNumo
     attr_accessor :resource_dir, :height, :width, :model
 
-    def initialize(dir)
+    def initialize(dir, height: 256, width: 256)
       @resource_dir = dir
-      @height = 256
-      @width = 256
+      @height = height
+      @width = width
       @model = Model.new(height: height, width: width)
       @show_u = true
       @color = 'colorful'
