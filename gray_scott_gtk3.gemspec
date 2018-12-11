@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['2xijok@gmail.com']
 
   spec.summary       = 'Gray-Scott model.'
-  spec.description   = 'Gray-Scott model.'
+  spec.description   = 'Reaction diffusion system (Gray-Scott model).'
   spec.homepage      = 'https://github.com/kojix2/Gray-Scott'
 
   # Specify which files should be added to the gem when it is released.
@@ -22,9 +22,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'numo-narray'
-  # RSVG2: May not work with gtk3 alone
   spec.add_dependency 'gtk3'
-  spec.add_dependency 'rsvg2'
 
   spec.add_development_dependency 'bundler', '~> 1.17'
   spec.add_development_dependency 'rake', '~> 10.0'
