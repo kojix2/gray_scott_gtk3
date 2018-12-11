@@ -1,6 +1,6 @@
 # Gray-Scott
 
-![screenshot](https://raw.githubusercontent.com/kojix2/Gray-Scott/develop2/screenshot/screenshot.gif)
+![screenshot](https://github.com/kojix2/Gray-Scott/blob/master/screenshot/screenshot.gif)
 
 ## Requirements
 
