@@ -170,5 +170,23 @@ module GrayScottGtk3
     def doing_now?
       @doing_now
     end
+
+    private
+    def debug_p_u
+      p model.u
+    end
+
+    def debug_p_v
+      p model.v
+    end
+
+    def debug_p_f
+      p model.f
+    end
+
+    def debug_p_k
+      p model.k
+    end
+
   end
 end
