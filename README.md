@@ -39,6 +39,7 @@ c.model.v.rand(0.0, 0.15)
 c.color = 'green' # colorful is slow. 
 Gtk.main
 ```
+![screenshot](https://raw.githubusercontent.com/kojix2/Gray-Scott/screenshot/screenshot/reverse-green.png)
 
 ## Known issue
 
