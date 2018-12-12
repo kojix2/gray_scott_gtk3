@@ -26,6 +26,7 @@ module GrayScottGtk3
     def run(opt)
       xml_path = File.expand_path('../resources/', __dir__)
       Controller.new(xml_path, opt)
+      Gtk.main
     end
   end
 end

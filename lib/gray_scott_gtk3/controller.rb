@@ -3,7 +3,7 @@ require_relative 'controller/aboutdialog'
 module GrayScottGtk3
   class Controller
     include ShortNumo
-    attr_accessor :resource_dir, :height, :width, :model
+    attr_accessor :resource_dir, :height, :width, :model, :color
 
     def initialize(dir, height: 256, width: 256)
       @resource_dir = dir
@@ -24,7 +24,6 @@ module GrayScottGtk3
 
       @win.show_all # window
       on_new_clicked
-      Gtk.main
     end
 
     def show_about
