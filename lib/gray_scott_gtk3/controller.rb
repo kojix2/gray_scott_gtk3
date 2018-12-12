@@ -16,7 +16,7 @@ module GrayScottGtk3
       builder = Gtk::Builder.new
       builder.add_from_file File.join(resource_dir, 'gray_scott.glade')
 
-      %w[win gimage legend_image uv_combobox pen_density pen_radius].each do |s|
+      %w[win execute_button gimage legend_image uv_combobox pen_density pen_radius].each do |s|
         instance_variable_set('@' + s, builder.get_object(s))
       end
 
@@ -68,9 +68,13 @@ module GrayScottGtk3
       end
     end
 
-    def on_save_clicked
+    def stop
       @doing_now = false
+      @execute_button.active = false
+    end
 
+    def on_save_clicked
+      stop if doing_now?
       dialog = Gtk::FileChooserDialog.new(title: 'PNG画像を保存',
                                           action: :save,
                                           buttons: [%i[save accept], %i[cancel cancel]])
