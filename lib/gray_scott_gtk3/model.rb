@@ -34,6 +34,12 @@ module GrayScottGtk3
       dvdt = Dv * l_v + uvv - (f + k) * v
       u._ + (Dt * dudt)
       v._ + (Dt * dvdt)
+      immune_surveillance
+    end
+
+    def immune_surveillance
+      @u._.clip(0.00001, 1)
+      @v._.clip(0.00001, 1)
     end
   end
 end
