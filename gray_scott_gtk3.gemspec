@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['2xijok@gmail.com']
 
   spec.summary       = 'Gray-Scott model.'
-  spec.description   = 'Reaction diffusion system (Gray-Scott model).'
+  spec.description   = 'Reaction diffusion system (Gray-Scott model). screenshot: https://bit.ly/2rvKErd'
   spec.homepage      = 'https://github.com/kojix2/Gray-Scott'
 
   # Specify which files should be added to the gem when it is released.
