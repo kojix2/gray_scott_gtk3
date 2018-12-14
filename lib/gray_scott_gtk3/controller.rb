@@ -175,6 +175,7 @@ module GrayScottGtk3
     end
 
     private
+
     def debug_p_u
       p model.u
     end
@@ -190,6 +191,5 @@ module GrayScottGtk3
     def debug_p_k
       p model.k
     end
-
   end
 end

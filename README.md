@@ -21,6 +21,7 @@ $ grayscott 40 -w 256 -h 256 # size of model. display is fixed to 512 x 512 pixe
 ## Usage with terminal(example)
 
 $ bundle install
+
 $ bundle exec bin/console
 
 ```ruby
@@ -39,6 +40,7 @@ c.model.v.rand(0.0, 0.15)
 c.color = 'green' # colorful is slow. 
 Gtk.main
 ```
+
 ![screenshot](https://raw.githubusercontent.com/kojix2/Gray-Scott/screenshot/screenshot/reverse-green.png)
 
 ## Known issue
