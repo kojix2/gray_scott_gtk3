@@ -5,7 +5,8 @@
 ## Requirements
 
 * Ruby
-* Numo/NArray
+* Numo/NArray (CPU)
+  * Cumo/NArray (GPU)
 * Ruby/Gtk3
 
 ## Installation
