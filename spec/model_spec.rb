@@ -14,11 +14,11 @@ RSpec.describe GrayScott::Model do
   end
 
   it 'has u' do
-    expect(@model.u).to be_an_instance_of Numo::SFloat
+    expect(@model.u).to be_an_instance_of Xumo::SFloat
   end
 
   it 'has v' do
-    expect(@model.v).to be_an_instance_of Numo::SFloat
+    expect(@model.v).to be_an_instance_of Xumo::SFloat
   end
 
   it 'respond to clear' do

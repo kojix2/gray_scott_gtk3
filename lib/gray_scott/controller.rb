@@ -2,7 +2,7 @@ require_relative 'controller/aboutdialog'
 
 module GrayScott
   class Controller
-    include ShortNumo
+    include XumoShortHand
     attr_accessor :resource_dir, :height, :width, :model, :color
 
     def initialize(dir, height: 256, width: 256)
@@ -61,7 +61,9 @@ module GrayScott
     def execute
       @doing_now = true
       GLib::Timeout.add MSEC do
-        model.update
+        3000.times do
+          model.update
+        end
         display
         @doing_now
       end

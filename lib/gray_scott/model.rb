@@ -1,6 +1,6 @@
 module GrayScott
   class Model
-    include ShortNumo
+    include XumoShortHand 
 
     Dx = 0.01
     Dt = 1
@@ -38,8 +38,11 @@ module GrayScott
     end
 
     def immune_surveillance
-      @u._.clip(0.00001, 1)
-      @v._.clip(0.00001, 1)
+      # clip is better.
+      @u[@u.lt 0.00001] = 0.00001
+      @u[@u.gt 1] = 1
+      @v[@v.lt 0.00001] = 0.00001
+      @v[@v.gt 1] = 1
     end
   end
 end

@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'gray_scott'
 require 'optparse'
 
 opt = {}
@@ -8,9 +7,16 @@ OptionParser.new do |op|
   op.banner += ' msec'
   op.on('-h val', '--height', 'height of the model') { |v| opt[:height] = v.to_i }
   op.on('-w val', '--width', 'width of the model') { |v| opt[:width] = v.to_i }
-  op.version = GrayScott::VERSION
+  op.on('-g', '--gpu', 'use GPU(Cumo)'){ |v| opt[:gpu] = v }
   op.parse!(ARGV)
 end
+
+if opt[:gpu]
+  require 'cumo/narray'
+end
+opt.delete(:gpu)
+
+require 'gray_scott'
 
 if ARGV[0]
   module GrayScott
