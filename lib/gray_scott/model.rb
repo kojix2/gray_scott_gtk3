@@ -26,8 +26,8 @@ module GrayScott
     end
 
     def update
-      l_u = SFloat._laplacian2d u, Dx
-      l_v = SFloat._laplacian2d v, Dx
+      l_u = Utils::Math._laplacian2d u, Dx
+      l_v = Utils::Math._laplacian2d v, Dx
 
       uvv = u * v * v
       dudt = Du * l_u - uvv + f * (1.0 - u)
