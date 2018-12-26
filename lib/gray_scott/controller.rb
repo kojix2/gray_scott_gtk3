@@ -72,6 +72,21 @@ module GrayScott
       @execute_button.active = false
     end
 
+    def on_open_clicked
+      stop if doing_now?
+      dialog = Gtk::FileChooserDialog.new(title: 'Open Gray-Scott Model',
+                                          action: :open,
+                                          buttons: [%i[open accept], %i[cancel cancel]])
+      if dialog.run == :accept
+        filename = dialog.filename
+        str = File.read(filename)
+        # todo: check model
+        @model = Marshal.load(str)
+        display
+      end
+      dialog.destroy
+    end
+
     def on_save_clicked
       stop if doing_now?
       dialog = Gtk::FileChooserDialog.new(title: 'Save Gray-Scott Model',
