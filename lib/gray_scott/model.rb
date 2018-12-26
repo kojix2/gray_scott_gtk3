@@ -1,4 +1,4 @@
-module GrayScottGtk3
+module GrayScott
   class Model
     include ShortNumo
 

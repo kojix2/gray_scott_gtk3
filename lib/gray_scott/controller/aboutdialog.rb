@@ -1,4 +1,4 @@
-module GrayScottGtk3
+module GrayScott
   class Controller
     class AboutDialog
       def initialize(resource_dir)
@@ -6,7 +6,7 @@ module GrayScottGtk3
         @a.program_name = 'Gray-Scott'
         @a.logo = GdkPixbuf::Pixbuf.new(file: File.join(resource_dir, 'about_icon.png'))
         @a.authors = ['kojix2']
-        @a.version = GrayScottGtk3::VERSION
+        @a.version = GrayScott::VERSION
         @a.run
         @a.destroy
       end

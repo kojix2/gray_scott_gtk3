@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'gray_scott_gtk3'
+require 'gray_scott'
 require 'optparse'
 
 opt = {}
@@ -8,12 +8,12 @@ OptionParser.new do |op|
   op.banner += ' msec'
   op.on('-h val', '--height', 'height of the model') { |v| opt[:height] = v.to_i }
   op.on('-w val', '--width', 'width of the model') { |v| opt[:width] = v.to_i }
-  op.version = GrayScottGtk3::VERSION
+  op.version = GrayScott::VERSION
   op.parse!(ARGV)
 end
 
 if ARGV[0]
-  module GrayScottGtk3
+  module GrayScott
     MSEC = ARGV[0].to_i
   end
 else
@@ -21,7 +21,7 @@ else
   exit
 end
 
-module GrayScottGtk3
+module GrayScott
   class << self
     def run(opt)
       xml_path = File.expand_path('../resources/', __dir__)
@@ -31,4 +31,4 @@ module GrayScottGtk3
   end
 end
 
-GrayScottGtk3.run(opt)
+GrayScott.run(opt)

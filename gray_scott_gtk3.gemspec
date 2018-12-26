@@ -1,10 +1,10 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'gray_scott_gtk3/version'
+require 'gray_scott/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'gray_scott_gtk3'
-  spec.version       = GrayScottGtk3::VERSION
+  spec.version       = GrayScott::VERSION
   spec.authors       = ['kojix2']
   spec.email         = ['2xijok@gmail.com']
 

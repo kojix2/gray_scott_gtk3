@@ -25,8 +25,8 @@ $ bundle install
 $ bundle exec bin/console
 
 ```ruby
-GrayScottGtk3::Controller::MSEC = 50
-c = GrayScottGtk3::Controller.new 'resources/', width:1024, height:1024
+GrayScott::Controller::MSEC = 50
+c = GrayScott::Controller.new 'resources/', width:1024, height:1024
 
 # custom feed / kill ratio
 na = Numo::SFloat.new(1024,1).seq + 10 # avoid zero
@@ -37,7 +37,7 @@ k = na.transpose * 0.06 + 0.01
 c.model.f = f
 c.model.k = k
 c.model.v.rand(0.0, 0.15)
-c.color = 'green' # colorful is slow. 
+c.color = 'reverse_green' # colorful is slow. 
 Gtk.main
 ```
 

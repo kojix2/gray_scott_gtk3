@@ -10,12 +10,12 @@ module ShortNumo
   UInt8  = Numo::UInt8
 end
 
-require 'gray_scott_gtk3/model'
-require 'gray_scott_gtk3/controller'
-require 'gray_scott_gtk3/laplacian'
-require 'gray_scott_gtk3/version'
+require 'gray_scott/model'
+require 'gray_scott/controller'
+require 'gray_scott/laplacian'
+require 'gray_scott/version'
 
-module GrayScottGtk3
+module GrayScott
   class Error < StandardError; end
   # Your code goes here...
 end

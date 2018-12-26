@@ -1,3 +1,3 @@
-module GrayScottGtk3
+module GrayScott
   VERSION = '0.4.0'.freeze
 end

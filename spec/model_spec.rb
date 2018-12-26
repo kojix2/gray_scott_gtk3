@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe GrayScottGtk3::Model do
+RSpec.describe GrayScott::Model do
   before do
-    @model = GrayScottGtk3::Model.new
+    @model = GrayScott::Model.new
   end
 
   it 'has feed rate' do

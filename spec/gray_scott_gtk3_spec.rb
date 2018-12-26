@@ -1,5 +1,5 @@
-RSpec.describe GrayScottGtk3 do
+RSpec.describe GrayScott do
   it 'has a version number' do
-    expect(GrayScottGtk3::VERSION).not_to be nil
+    expect(GrayScott::VERSION).not_to be nil
   end
 end

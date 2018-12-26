@@ -1,6 +1,6 @@
 require_relative 'controller/aboutdialog'
 
-module GrayScottGtk3
+module GrayScott
   class Controller
     include ShortNumo
     attr_accessor :resource_dir, :height, :width, :model, :color
