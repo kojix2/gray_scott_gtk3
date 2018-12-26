@@ -61,9 +61,7 @@ module GrayScott
     def execute
       @doing_now = true
       GLib::Timeout.add MSEC do
-        3000.times do
-          model.update
-        end
+        model.update
         display
         @doing_now
       end
