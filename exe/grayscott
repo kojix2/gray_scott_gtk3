@@ -18,15 +18,6 @@ opt.delete(:gpu)
 
 require 'gray_scott'
 
-if ARGV[0]
-  module GrayScott
-    MSEC = ARGV[0].to_i
-  end
-else
-  puts 'please specify command-line argument. For example `grayscott 40`'
-  exit
-end
-
 module GrayScott
   class << self
     def run(opt)

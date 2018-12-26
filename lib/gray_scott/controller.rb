@@ -12,6 +12,8 @@ module GrayScott
       @model = Model.new(height: height, width: width)
       @show_u = false
       @color = 'colorful'
+      @frames = 1
+      @msec = 40
 
       builder = Gtk::Builder.new
       builder.add_from_file File.join(resource_dir, 'gray_scott.glade')
@@ -38,6 +40,15 @@ module GrayScott
       model.k = k.value
     end
 
+    def on_frames_changed(frames)
+      @frames = frames.value.to_i
+    end
+
+    def on_msec_changed(msec)
+      @msec = msec.value.to_i
+    end
+
+
     def display
       @gimage.pixbuf = to_pixbuf(@show_u ? model.u : model.v)
     end
@@ -60,8 +71,10 @@ module GrayScott
 
     def execute
       @doing_now = true
-      GLib::Timeout.add MSEC do
-        model.update
+      GLib::Timeout.add @msec do
+        @frames.times do
+          model.update
+        end
         display
         @doing_now
       end
