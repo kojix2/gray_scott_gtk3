@@ -23,7 +23,7 @@ module GrayScott
       builder.connect_signals { |handler| method(handler) }
 
       @win.show_all # window
-      on_new_clicked
+      on_clear_clicked
     end
 
     def show_about
@@ -118,7 +118,7 @@ module GrayScott
       Gtk.main_quit
     end
 
-    def on_new_clicked
+    def on_clear_clicked
       model.clear
       display_legend
       display
