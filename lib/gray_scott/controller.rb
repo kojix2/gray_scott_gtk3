@@ -74,7 +74,21 @@ module GrayScott
 
     def on_save_clicked
       stop if doing_now?
-      dialog = Gtk::FileChooserDialog.new(title: 'PNG画像を保存',
+      dialog = Gtk::FileChooserDialog.new(title: 'Save Gray-Scott Model',
+                                          action: :save,
+                                          buttons: [%i[save accept], %i[cancel cancel]])
+      dialog.do_overwrite_confirmation = true
+      if dialog.run == :accept
+        filename = dialog.filename
+        str = Marshal.dump(model)
+        File.write(filename, str)
+      end
+      dialog.destroy
+    end
+
+    def on_convert_clicked
+      stop if doing_now?
+      dialog = Gtk::FileChooserDialog.new(title: 'Save PNG image',
                                           action: :save,
                                           buttons: [%i[save accept], %i[cancel cancel]])
       dialog.do_overwrite_confirmation = true
