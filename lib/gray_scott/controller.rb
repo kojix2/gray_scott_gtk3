@@ -48,7 +48,6 @@ module GrayScott
       @msec = msec.value.to_i
     end
 
-
     def display
       @gimage.pixbuf = to_pixbuf(@show_u ? model.u : model.v)
     end
@@ -93,7 +92,7 @@ module GrayScott
       if dialog.run == :accept
         filename = dialog.filename
         str = File.read(filename)
-        # todo: check model
+        # TODO: check model
         @model = Marshal.load(str)
         display
       end

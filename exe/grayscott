@@ -6,13 +6,11 @@ opt = {}
 OptionParser.new do |op|
   op.on('-h val', '--height', 'height of the model') { |v| opt[:height] = v.to_i }
   op.on('-w val', '--width', 'width of the model') { |v| opt[:width] = v.to_i }
-  op.on('-g', '--gpu', 'use GPU(Cumo)'){ |v| opt[:gpu] = v }
+  op.on('-g', '--gpu', 'use GPU(Cumo)') { |v| opt[:gpu] = v }
   op.parse!(ARGV)
 end
 
-if opt[:gpu]
-  require 'cumo/narray'
-end
+require 'cumo/narray' if opt[:gpu]
 opt.delete(:gpu)
 
 require 'gray_scott'

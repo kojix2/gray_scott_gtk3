@@ -1,6 +1,6 @@
 module GrayScott
   class Model
-    include XumoShortHand 
+    include XumoShortHand
 
     Dx = 0.01
     Dt = 1

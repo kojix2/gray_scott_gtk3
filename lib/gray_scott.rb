@@ -1,10 +1,10 @@
 require 'gtk3'
 
-unless Object.const_defined? :Cumo 
+if Object.const_defined? :Cumo
+  Xumo = Cumo
+else
   require 'numo/narray'
   Xumo = Numo
-else
-  Xumo = Cumo
 end
 
 module XumoShortHand
