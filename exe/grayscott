@@ -4,7 +4,6 @@ require 'optparse'
 
 opt = {}
 OptionParser.new do |op|
-  op.banner += ' msec'
   op.on('-h val', '--height', 'height of the model') { |v| opt[:height] = v.to_i }
   op.on('-w val', '--width', 'width of the model') { |v| opt[:width] = v.to_i }
   op.on('-g', '--gpu', 'use GPU(Cumo)'){ |v| opt[:gpu] = v }

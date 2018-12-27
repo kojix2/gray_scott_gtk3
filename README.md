@@ -15,9 +15,9 @@ $ gem install gray_scott_gtk3
 
 ## Usage
 
-$ grayscott 40 # msec
+$ grayscott
 
-$ grayscott 40 -w 256 -h 256 # size of model. display is fixed to 512 x 512 pixels.
+$ grayscott -w 256 -h 256 # size of model. display is fixed to 512 x 512 pixels.
 
 ## Usage with terminal(example)
 
@@ -26,7 +26,6 @@ $ bundle install
 $ bundle exec bin/console
 
 ```ruby
-GrayScott::Controller::MSEC = 50
 c = GrayScott::Controller.new 'resources/', width:1024, height:1024
 
 # custom feed / kill ratio
