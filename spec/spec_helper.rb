@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'gray_scott_gtk3'
+require 'gray_scott'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
