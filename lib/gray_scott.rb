@@ -22,5 +22,4 @@ require 'gray_scott/version'
 
 module GrayScott
   class Error < StandardError; end
-  # Your code goes here...
 end
