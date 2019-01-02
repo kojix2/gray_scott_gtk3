@@ -16,6 +16,7 @@ module XumoShortHand
 end
 
 require 'gray_scott/model'
+require 'gray_scott/color'
 require 'gray_scott/controller'
 require 'gray_scott/utils/math'
 require 'gray_scott/version'
