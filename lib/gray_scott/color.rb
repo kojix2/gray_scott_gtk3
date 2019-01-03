@@ -3,6 +3,27 @@ module GrayScott
     class << self
       include XumoShortHand
 
+      def colorize(ar, color_type)
+        case color_type
+        when 'colorful'
+          hsv2rgb(ar)
+        when 'reverse-colorful'
+          hsv2rgb(1.0 - ar)
+        when 'red'
+          red(ar)
+        when 'green'
+          green(ar)
+        when 'blue'
+          blue(ar)
+        when 'reverse-red'
+          reverse_red(ar)
+        when 'reverse-green'
+          reverse_green(ar)
+        when 'reverse-blue'
+          reverse_blue(ar)
+        end
+      end
+
       def hsv2rgb(h)
         height, width = h.shape
         i = UInt8.cast(h * 6)
@@ -21,7 +42,7 @@ module GrayScott
         rgb[i.eq 4] = UInt8.dstack([t, p, v])[i.eq 4]
         rgb[i.eq 5] = UInt8.dstack([v, p, q])[i.eq 5]
         rgb
-      end
+        end
 
       def red(ar)
         uint8_zeros_256(0, ar)
@@ -53,7 +74,6 @@ module GrayScott
         d[true, true, ch] = UInt8.cast(ar * 256)
         d
       end
-
     end
   end
 end

@@ -54,7 +54,7 @@ module GrayScott
 
     def display_legend
       legend = (SFloat.new(1, 512).seq * SFloat.ones(16, 1)) / 512
-      data = colorize(legend, @color)
+      data = Color.colorize(legend, @color)
       string = data.to_string
       pixbuf = GdkPixbuf::Pixbuf.new data: string, width: 512, height: 16
       @legend_image.pixbuf = pixbuf
@@ -157,29 +157,8 @@ module GrayScott
       display unless doing_now?
     end
 
-    def colorize(ar, color_type)
-      case color_type
-      when 'colorful'
-        Color.hsv2rgb(ar)
-      when 'reverse-colorful'
-        Color.hsv2rgb(1.0 - ar)
-      when 'red'
-        Color.red(ar)
-      when 'green'
-        Color.green(ar)
-      when 'blue'
-        Color.blue(ar)
-      when 'reverse-red'
-        Color.reverse_red(ar)
-      when 'reverse-green'
-        Color.reverse_green(ar)
-      when 'reverse-blue'
-        Color.reverse_blue(ar)
-      end
-    end
-
     def to_pixbuf(ar, color_type = @color)
-      data = colorize(ar, color_type).to_string
+      data = Color.colorize(ar, color_type).to_string
       height, width = ar.shape
       pixbuf = GdkPixbuf::Pixbuf.new data: data, width: width, height: height
       pixbuf.scale_simple 512, 512, :bilinear
