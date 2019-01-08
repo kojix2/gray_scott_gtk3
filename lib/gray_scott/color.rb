@@ -20,6 +20,8 @@ module GrayScott
         reverse_green(ar)
       when 'reverse-blue'
         reverse_blue(ar)
+      when 'grayscale'
+        grayscale(ar)
       end
     end
 
@@ -65,6 +67,11 @@ module GrayScott
 
     def reverse_blue(ar)
       uint8_zeros_256(2, (1.0 - ar))
+    end
+
+    def grayscale(ar)
+      d = ar * 255
+      UInt8.dstack([d,d,d])
     end
 
     private
