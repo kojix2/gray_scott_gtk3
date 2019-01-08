@@ -50,11 +50,11 @@ module GrayScott
     end
 
     def display
-      @gimage.pixbuf = to_pixbuf(@show_u ? model.u : model.v)
+      @gimage.pixbuf = create_pixbuf(colorize((@show_u ? model.u : model.v), color))
     end
 
     def display_legend
-      legend = (SFloat.new(1, 512).seq * SFloat.ones(16, 1)) / 512
+      legend = (SFloat.new(1, 512).seq * SFloat.ones(16, 1)) / 512.0/
       data = colorize(legend, @color)
       string = data.to_string
       pixbuf = GdkPixbuf::Pixbuf.new data: string, width: 512, height: 16
@@ -158,8 +158,8 @@ module GrayScott
       display unless doing_now?
     end
 
-    def to_pixbuf(ar, color_type = @color)
-      data = colorize(ar, color_type).to_string
+    def create_pixbuf(ar)
+      data = ar.to_string
       height, width = ar.shape
       pixbuf = GdkPixbuf::Pixbuf.new data: data, width: width, height: height
       pixbuf.scale_simple 512, 512, :bilinear
