@@ -1,11 +1,18 @@
 module GrayScott
+
+  # Gray-Scott model
   class Model
     include XumoShortHand
 
     Dx = 0.01
+
+    # Delta t is the change in time for each iteration
     Dt = 1
 
+    # diffusion rate for U
     Du = 2e-5
+
+    # diffusion rate for V
     Dv = 1e-5
 
     attr_accessor :f, :k, :u, :v
@@ -13,10 +20,14 @@ module GrayScott
     def initialize(width: 256, height: 256)
       # Feed rate
       @f = 0.04
+
       # Kill rate
       @k = 0.06
 
+      # concentration of U
       @u = SFloat.ones height, width
+
+      # concentration of V
       @v = SFloat.zeros height, width
     end
 
