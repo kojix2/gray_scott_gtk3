@@ -2,6 +2,7 @@ require_relative 'controller/aboutdialog'
 
 module GrayScott
   class Controller
+    include Color
     include XumoShortHand
     attr_accessor :resource_dir, :height, :width, :model, :color
 
@@ -54,7 +55,7 @@ module GrayScott
 
     def display_legend
       legend = (SFloat.new(1, 512).seq * SFloat.ones(16, 1)) / 512
-      data = Color.colorize(legend, @color)
+      data = colorize(legend, @color)
       string = data.to_string
       pixbuf = GdkPixbuf::Pixbuf.new data: string, width: 512, height: 16
       @legend_image.pixbuf = pixbuf
@@ -158,7 +159,7 @@ module GrayScott
     end
 
     def to_pixbuf(ar, color_type = @color)
-      data = Color.colorize(ar, color_type).to_string
+      data = colorize(ar, color_type).to_string
       height, width = ar.shape
       pixbuf = GdkPixbuf::Pixbuf.new data: data, width: width, height: height
       pixbuf.scale_simple 512, 512, :bilinear
