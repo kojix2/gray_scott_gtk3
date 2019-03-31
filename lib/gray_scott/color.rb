@@ -28,9 +28,9 @@ module GrayScott
     # speed
     def uInt8_dstack(ar)
       x = UInt8.zeros(*ar[0].shape, 3)
-      x[true,true,0] = ar[0]
-      x[true,true,1] = ar[1]
-      x[true,true,2] = ar[2]
+      x[true, true, 0] = ar[0]
+      x[true, true, 1] = ar[1]
+      x[true, true, 2] = ar[2]
       x
     end
 
@@ -43,7 +43,7 @@ module GrayScott
       t = f * 256
       rgb = UInt8.zeros *h.shape, 3
       t = UInt8.cast(t)
-      i = uInt8_dstack([i,i,i])
+      i = uInt8_dstack([i, i, i])
       rgb[i.eq 0] = uInt8_dstack([v, t, p])[i.eq 0]
       rgb[i.eq 1] = uInt8_dstack([q, v, p])[i.eq 1]
       rgb[i.eq 2] = uInt8_dstack([p, v, t])[i.eq 2]
