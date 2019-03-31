@@ -1,5 +1,7 @@
 # Gray-Scott
 
+Ruby implementation of the Reaction diffusion system (Gray-Scott model).
+
 ![screenshot](https://raw.githubusercontent.com/kojix2/Gray-Scott/screenshot/screenshot/screenshot.gif)
 
 ## Installation
