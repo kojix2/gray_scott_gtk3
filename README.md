@@ -2,44 +2,27 @@
 
 ![screenshot](https://raw.githubusercontent.com/kojix2/Gray-Scott/screenshot/screenshot/screenshot.gif)
 
-## Requirements
-
-* Ruby
-* Numo/NArray (CPU)
-  * Cumo/NArray (GPU)
-* Ruby/Gtk3
-
 ## Installation
 
-$ gem install gray_scott_gtk3
+```bash
+gem install gray_scott_gtk3
+```
 
 ## Usage
 
-$ grayscott
-
-$ grayscott -w 256 -h 256 # size of model. display is fixed to 512 x 512 pixels.
-
-## Usage with terminal(example)
-
-$ bundle install
-
-$ bundle exec bin/console
-
-```ruby
-c = GrayScott::Controller.new 'resources/', width:1024, height:1024
-
-# custom feed / kill ratio
-na = Numo::SFloat.new(1024,1).seq + 10 # avoid zero
-na = na * Numo::SFloat.ones(1, 1024)
-na = na / na.max
-f = na * 0.05
-k = na.transpose * 0.06 + 0.01
-c.model.f = f
-c.model.k = k
-c.model.v.rand(0.0, 0.15)
-c.color = 'reverse_green' # colorful is slow. 
-Gtk.main
+```bash
+grayscott
 ```
+
+```bash
+grayscott --help
+# Usage: grayscott [options]
+#    -h, --height val                 height of the model
+#    -w, --width val                  width of the model
+#    -g, --gpu                        use GPU(Cumo)
+```
+
+NOTE : You can set the width and height of the model, but the width and height of the window is fixed at 512 x 512 pixels.
 
 ![screenshot](https://raw.githubusercontent.com/kojix2/Gray-Scott/screenshot/screenshot/reverse-green.png)
 
