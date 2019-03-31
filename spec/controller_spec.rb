@@ -16,5 +16,4 @@ RSpec.describe GrayScott::Controller do
   it 'respond to doing_now?' do
     expect(@controller).to respond_to :doing_now?
   end
-
 end

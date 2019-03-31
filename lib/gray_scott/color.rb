@@ -25,23 +25,31 @@ module GrayScott
       end
     end
 
+    # speed
+    def uInt8_dstack(ar)
+      x = UInt8.zeros(*ar[0].shape, 3)
+      x[true,true,0] = ar[0]
+      x[true,true,1] = ar[1]
+      x[true,true,2] = ar[2]
+      x
+    end
+
     def hsv2rgb(h)
-      height, width = h.shape
       i = UInt8.cast(h * 6)
       f = (h * 6.0) - i
-      p = UInt8.zeros height, width, 1
-      v = UInt8.new(height, width, 1).fill 255
+      p = UInt8.zeros *h.shape
+      v = UInt8.new(*h.shape).fill 255
       q = (1.0 - f) * 256
       t = f * 256
-      rgb = UInt8.zeros height, width, 3
-      t = UInt8.cast(t).expand_dims(2)
-      i = UInt8.dstack([i, i, i])
-      rgb[i.eq 0] = UInt8.dstack([v, t, p])[i.eq 0]
-      rgb[i.eq 1] = UInt8.dstack([q, v, p])[i.eq 1]
-      rgb[i.eq 2] = UInt8.dstack([p, v, t])[i.eq 2]
-      rgb[i.eq 3] = UInt8.dstack([p, q, v])[i.eq 3]
-      rgb[i.eq 4] = UInt8.dstack([t, p, v])[i.eq 4]
-      rgb[i.eq 5] = UInt8.dstack([v, p, q])[i.eq 5]
+      rgb = UInt8.zeros *h.shape, 3
+      t = UInt8.cast(t)
+      i = uInt8_dstack([i,i,i])
+      rgb[i.eq 0] = uInt8_dstack([v, t, p])[i.eq 0]
+      rgb[i.eq 1] = uInt8_dstack([q, v, p])[i.eq 1]
+      rgb[i.eq 2] = uInt8_dstack([p, v, t])[i.eq 2]
+      rgb[i.eq 3] = uInt8_dstack([p, q, v])[i.eq 3]
+      rgb[i.eq 4] = uInt8_dstack([t, p, v])[i.eq 4]
+      rgb[i.eq 5] = uInt8_dstack([v, p, q])[i.eq 5]
       rgb
     end
 
@@ -71,7 +79,7 @@ module GrayScott
 
     def grayscale(ar)
       d = ar * 255
-      UInt8.dstack([d,d,d])
+      UInt8.dstack([d, d, d])
     end
 
     private

@@ -1,5 +1,4 @@
 module GrayScott
-
   # Gray-Scott model
   class Model
     include XumoShortHand
