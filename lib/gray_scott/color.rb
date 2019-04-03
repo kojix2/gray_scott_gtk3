@@ -79,7 +79,7 @@ module GrayScott
 
     def grayscale(ar)
       d = ar * 255
-      UInt8.dstack([d, d, d])
+      uInt8_dstack([d, d, d])
     end
 
     private
