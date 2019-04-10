@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Gray-Scott model'
   spec.description   = 'Reaction diffusion system (Gray-Scott model).'
-  spec.homepage      = 'https://github.com/kojix2/grayscott'
+  spec.homepage      = 'https://github.com/kojix2/Gray-Scott'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
