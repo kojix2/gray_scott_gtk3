@@ -11,8 +11,8 @@ module GrayScott
           d.copyright = 'Copyright (C) kojix2'
           d.authors = ['kojix2']
           d.version = GrayScott::VERSION
-          d.website = 'https://github.com/kojix2/gray-scott'
-          d.website_label = 'Github kojix2/gray-scott'
+          d.website = 'https://github.com/kojix2/Gray-Scott'
+          d.website_label = 'Github kojix2/Gray-Scott'
           d.run
           d.destroy
         end
