@@ -3,10 +3,10 @@
 
 require 'optparse'
 
-opt = {}
+opt = { width: 256, height: 256 }
 OptionParser.new do |op|
-  op.on('-h val', '--height', 'height of the model') { |v| opt[:height] = v.to_i }
-  op.on('-w val', '--width', 'width of the model') { |v| opt[:width] = v.to_i }
+  op.on('-h val', '--height', 'height of the model', Integer) { |v| opt[:height] = v }
+  op.on('-w val', '--width', 'width of the model', Integer) { |v| opt[:width] = v }
   op.on('-g', '--gpu', 'use GPU(Cumo)') { |v| opt[:gpu] = v }
   op.parse!(ARGV)
 end
@@ -20,7 +20,7 @@ module GrayScott
   class << self
     def run(opt)
       xml_path = File.expand_path('../resources/', __dir__)
-      Controller.new(xml_path, opt)
+      Controller.new(xml_path, height: opt[:height], width: opt[:width])
       Gtk.main
     end
   end
