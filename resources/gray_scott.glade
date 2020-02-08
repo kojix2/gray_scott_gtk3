@@ -408,37 +408,36 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkComboBoxText">
+                  <object class="GtkScaleButton" id="pen_density_scale">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="active">0</property>
-                    <items>
-                      <item translatable="yes">colorful</item>
-                      <item translatable="yes">reverse-colorful</item>
-                      <item translatable="yes">red</item>
-                      <item translatable="yes">green</item>
-                      <item translatable="yes">blue</item>
-                      <item translatable="yes">reverse-red</item>
-                      <item translatable="yes">reverse-green</item>
-                      <item translatable="yes">reverse-blue</item>
-                      <item translatable="yes">grayscale</item>
-                    </items>
-                    <signal name="changed" handler="on_color_combobox_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="uv_combobox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="active">1</property>
-                    <items>
-                      <item translatable="yes">U</item>
-                      <item translatable="yes">V</item>
-                    </items>
-                    <signal name="changed" handler="on_uv_combobox_changed" swapped="no"/>
+                    <property name="can_focus">True</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="receives_default">True</property>
+                    <property name="tooltip_text" translatable="yes">pen density</property>
+                    <property name="relief">none</property>
+                    <property name="orientation">vertical</property>
+                    <property name="adjustment">pen_density</property>
+                    <property name="icons">applications-graphics
+applications-graphics
+applications-graphics</property>
+                    <child internal-child="plus_button">
+                      <object class="GtkButton">
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="relief">none</property>
+                      </object>
+                    </child>
+                    <child internal-child="minus_button">
+                      <object class="GtkButton">
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="relief">none</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="position">0</property>
@@ -481,36 +480,37 @@ applications-graphics</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkScaleButton" id="pen_density_scale">
+                  <object class="GtkComboBoxText" id="uv_combobox">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="focus_on_click">False</property>
-                    <property name="receives_default">True</property>
-                    <property name="tooltip_text" translatable="yes">pen density</property>
-                    <property name="relief">none</property>
-                    <property name="orientation">vertical</property>
-                    <property name="adjustment">pen_density</property>
-                    <property name="icons">applications-graphics
-applications-graphics
-applications-graphics</property>
-                    <child internal-child="plus_button">
-                      <object class="GtkButton">
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="relief">none</property>
-                      </object>
-                    </child>
-                    <child internal-child="minus_button">
-                      <object class="GtkButton">
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="relief">none</property>
-                      </object>
-                    </child>
+                    <property name="can_focus">False</property>
+                    <property name="active">1</property>
+                    <items>
+                      <item translatable="yes">U</item>
+                      <item translatable="yes">V</item>
+                    </items>
+                    <signal name="changed" handler="on_uv_combobox_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="active">0</property>
+                    <items>
+                      <item translatable="yes">colorful</item>
+                      <item translatable="yes">reverse-colorful</item>
+                      <item translatable="yes">red</item>
+                      <item translatable="yes">green</item>
+                      <item translatable="yes">blue</item>
+                      <item translatable="yes">reverse-red</item>
+                      <item translatable="yes">reverse-green</item>
+                      <item translatable="yes">reverse-blue</item>
+                      <item translatable="yes">grayscale</item>
+                    </items>
+                    <signal name="changed" handler="on_color_combobox_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="position">0</property>
