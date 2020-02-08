@@ -15,7 +15,7 @@ module GrayScott
       @model = Model.new(height: height, width: width)
       @show_u = false
       @color = 'colorful'
-      @frames = 1
+      @frames = 5
       @msec = 40
 
       builder = Gtk::Builder.new
