@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GrayScott
   # Gray-Scott model
   class Model

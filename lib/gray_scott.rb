@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gtk3'
 
 if Object.const_defined? :Cumo
