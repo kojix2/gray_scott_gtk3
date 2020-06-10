@@ -39,11 +39,11 @@ module GrayScott
     def hsv2rgb(h)
       i = UInt8.cast(h * 6)
       f = (h * 6.0) - i
-      p = UInt8.zeros *h.shape
+      p = UInt8.zeros(*h.shape)
       v = UInt8.new(*h.shape).fill 255
       q = (1.0 - f) * 256
       t = f * 256
-      rgb = UInt8.zeros *h.shape, 3
+      rgb = UInt8.zeros(*h.shape, 3)
       t = UInt8.cast(t)
       i = uInt8_dstack([i, i, i])
       rgb[i.eq 0] = uInt8_dstack([v, t, p])[i.eq 0]
