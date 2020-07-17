@@ -1,5 +1,7 @@
 # Gray-Scott
 
+![Gem](https://img.shields.io/gem/v/gray_scott_gtk3)
+
 Ruby implementation of the Reaction diffusion system (Gray-Scott model).
 
 ![screenshot](https://raw.githubusercontent.com/kojix2/Gray-Scott/screenshot/screenshot/screenshot.gif)
