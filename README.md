@@ -1,6 +1,7 @@
 # Gray-Scott
 
 ![Gem](https://img.shields.io/gem/v/gray_scott_gtk3)
+![build status](https://travis-ci.com/kojix2/Gray-Scott.svg?branch=master)
 
 Ruby implementation of the Reaction diffusion system (Gray-Scott model).
 
@@ -33,7 +34,7 @@ NOTE : You can set the width and height of the model, but the width and height o
 ## Known issue
 
 Glib::Timeout.add(number_of_seconds)
-If processing can not be completed within the time, it will not be displayed. 
+If processing can not be completed within the time, it will not be displayed.
 In this case, you should increase the number of seconds.
 
 ## Contributing
