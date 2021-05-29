@@ -22,7 +22,7 @@ module GrayScott
       builder.add_from_file File.join(resource_dir, 'gray_scott.glade')
 
       %w[win execute_button gimage legend_image uv_combobox pen_density pen_radius].each do |s|
-        instance_variable_set('@' + s, builder.get_object(s))
+        instance_variable_set("@#{s}", builder.get_object(s))
       end
 
       builder.connect_signals { |handler| method(handler) }

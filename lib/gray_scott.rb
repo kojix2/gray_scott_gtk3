@@ -10,8 +10,10 @@ else
 end
 
 module XumoShortHand
-  class Xumo::SFloat
-    alias _ inplace
+  module Xumo
+    class SFloat
+      alias _ inplace
+    end
   end
   SFloat = Xumo::SFloat
   UInt8  = Xumo::UInt8
