@@ -2,6 +2,7 @@
 
 require 'gtk3'
 
+# Support for Cumo
 if Object.const_defined? :Cumo
   Xumo = Cumo
 else
@@ -9,6 +10,7 @@ else
   Xumo = Numo
 end
 
+# Monkey patch
 module Xumo
   class SFloat
     alias _ inplace
