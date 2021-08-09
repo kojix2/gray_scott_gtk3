@@ -9,15 +9,13 @@ else
   Xumo = Numo
 end
 
-module XumoShortHand
-  module Xumo
-    class SFloat
-      alias _ inplace
-    end
+module Xumo
+  class SFloat
+    alias _ inplace
   end
-  SFloat = Xumo::SFloat
-  UInt8  = Xumo::UInt8
 end
+SFloat = Xumo::SFloat
+UInt8  = Xumo::UInt8
 
 require 'gray_scott/model'
 require 'gray_scott/color'

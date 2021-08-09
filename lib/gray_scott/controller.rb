@@ -5,7 +5,6 @@ require_relative 'controller/aboutdialog'
 module GrayScott
   class Controller
     include Color
-    include XumoShortHand
     attr_accessor :resource_dir, :height, :width, :model, :color
 
     def initialize(dir, height: 256, width: 256)

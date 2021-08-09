@@ -3,8 +3,6 @@
 module GrayScott
   # Gray-Scott model
   class Model
-    include XumoShortHand
-
     Dx = 0.01
 
     # Delta t is the change in time for each iteration

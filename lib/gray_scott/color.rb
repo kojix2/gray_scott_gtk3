@@ -2,8 +2,6 @@
 
 module GrayScott
   module Color
-    include XumoShortHand
-
     def colorize(ar, color_type)
       case color_type
       when 'colorful'
