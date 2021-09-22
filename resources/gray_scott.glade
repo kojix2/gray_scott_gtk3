@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.38.2 -->
 <interface>
-  <requires lib="gtk+" version="3.16"/>
+  <requires lib="gtk+" version="3.24"/>
   <object class="GtkAdjustment" id="f">
     <property name="upper">0.10</property>
     <property name="value">0.04</property>
@@ -70,42 +70,38 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-new</property>
+                      <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">gtk-new</property>
                         <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
                         <signal name="activate" handler="on_clear_clicked" swapped="no"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-open</property>
+                      <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">gtk-open</property>
                         <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
                         <signal name="activate" handler="on_open_clicked" swapped="no"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-save-as</property>
+                      <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">gtk-save-as</property>
                         <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
                         <signal name="activate" handler="on_save_clicked" swapped="no"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-convert</property>
+                      <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">gtk-convert</property>
                         <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
                         <signal name="activate" handler="on_convert_clicked" swapped="no"/>
                       </object>
                     </child>
@@ -116,12 +112,11 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-quit</property>
+                      <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">gtk-quit</property>
                         <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
                         <signal name="activate" handler="main_quit" swapped="no"/>
                       </object>
                     </child>
@@ -140,12 +135,11 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-about</property>
+                      <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">gtk-about</property>
                         <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
                         <signal name="activate" handler="show_about" swapped="no"/>
                       </object>
                     </child>
@@ -221,7 +215,7 @@
                 <property name="tooltip-text" translatable="yes">clear</property>
                 <property name="label" translatable="yes">clear</property>
                 <property name="use-underline">True</property>
-                <property name="stock-id">gtk-clear</property>
+                <property name="icon-name">document-new</property>
                 <signal name="clicked" handler="on_clear_clicked" swapped="no"/>
               </object>
               <packing>
@@ -236,7 +230,7 @@
                 <property name="tooltip-text" translatable="yes">open</property>
                 <property name="label" translatable="yes">open</property>
                 <property name="use-underline">True</property>
-                <property name="stock-id">gtk-open</property>
+                <property name="icon-name">document-open</property>
                 <signal name="clicked" handler="on_open_clicked" swapped="no"/>
               </object>
               <packing>
@@ -251,7 +245,7 @@
                 <property name="tooltip-text" translatable="yes">save model</property>
                 <property name="label" translatable="yes">save</property>
                 <property name="use-underline">True</property>
-                <property name="stock-id">gtk-save</property>
+                <property name="icon-name">document-save</property>
                 <signal name="clicked" handler="on_save_clicked" swapped="no"/>
               </object>
               <packing>
@@ -266,7 +260,7 @@
                 <property name="tooltip-text" translatable="yes">save png image</property>
                 <property name="label" translatable="yes">save_png</property>
                 <property name="use-underline">True</property>
-                <property name="stock-id">gtk-convert</property>
+                <property name="icon-name">document-save-as</property>
                 <signal name="clicked" handler="on_convert_clicked" swapped="no"/>
               </object>
               <packing>
@@ -279,9 +273,9 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="tooltip-text" translatable="yes">execute</property>
-                <property name="label" translatable="yes">__glade_unnamed_42</property>
+                <property name="label" translatable="yes">go</property>
                 <property name="use-underline">True</property>
-                <property name="stock-id">gtk-media-play</property>
+                <property name="icon-name">media-playback-start</property>
                 <signal name="toggled" handler="on_execute_toggled" swapped="no"/>
               </object>
               <packing>
@@ -300,15 +294,12 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="margin-start">5</property>
-            <property name="margin-end">5</property>
             <property name="spacing">3</property>
             <child>
               <!-- n-columns=4 n-rows=1 -->
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="margin-top">1</property>
                 <property name="border-width">0</property>
                 <child>
                   <object class="GtkLabel" id="flabel">
@@ -603,8 +594,6 @@ applications-graphics</property>
               <object class="GtkEventBox">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="margin-start">5</property>
-                <property name="margin-end">5</property>
                 <property name="margin-top">5</property>
                 <property name="margin-bottom">5</property>
                 <signal name="motion-notify-event" handler="on_motion" swapped="no"/>
