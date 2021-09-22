@@ -73,7 +73,7 @@
                       <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">gtk-new</property>
+                        <property name="label" translatable="yes">Clear</property>
                         <property name="use-underline">True</property>
                         <signal name="activate" handler="on_clear_clicked" swapped="no"/>
                       </object>
@@ -82,7 +82,7 @@
                       <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">gtk-open</property>
+                        <property name="label" translatable="yes">Open</property>
                         <property name="use-underline">True</property>
                         <signal name="activate" handler="on_open_clicked" swapped="no"/>
                       </object>
@@ -91,7 +91,7 @@
                       <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">gtk-save-as</property>
+                        <property name="label" translatable="yes">Save</property>
                         <property name="use-underline">True</property>
                         <signal name="activate" handler="on_save_clicked" swapped="no"/>
                       </object>
@@ -100,7 +100,7 @@
                       <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">gtk-convert</property>
+                        <property name="label" translatable="yes">Save as PNG</property>
                         <property name="use-underline">True</property>
                         <signal name="activate" handler="on_convert_clicked" swapped="no"/>
                       </object>
@@ -115,7 +115,7 @@
                       <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">gtk-quit</property>
+                        <property name="label" translatable="yes">Quit</property>
                         <property name="use-underline">True</property>
                         <signal name="activate" handler="main_quit" swapped="no"/>
                       </object>
@@ -138,7 +138,7 @@
                       <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">gtk-about</property>
+                        <property name="label" translatable="yes">About</property>
                         <property name="use-underline">True</property>
                         <signal name="activate" handler="show_about" swapped="no"/>
                       </object>
@@ -300,34 +300,22 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <child>
-                  <object class="GtkScaleButton" id="pen_density_scale">
+                  <object class="GtkComboBoxText">
                     <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
-                    <property name="tooltip-text" translatable="yes">pen density</property>
-                    <property name="relief">none</property>
-                    <property name="orientation">vertical</property>
-                    <property name="adjustment">pen_density</property>
-                    <property name="icons">applications-graphics
-applications-graphics
-applications-graphics</property>
-                  </object>
-                  <packing>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScaleButton" id="pen_radius_scale">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
-                    <property name="tooltip-text" translatable="yes">pen radius</property>
-                    <property name="relief">none</property>
-                    <property name="orientation">vertical</property>
-                    <property name="adjustment">pen_radius</property>
-                    <property name="icons">applications-graphics
-applications-graphics
-applications-graphics</property>
+                    <property name="can-focus">False</property>
+                    <property name="active">0</property>
+                    <items>
+                      <item translatable="yes">colorful</item>
+                      <item translatable="yes">reverse-colorful</item>
+                      <item translatable="yes">red</item>
+                      <item translatable="yes">green</item>
+                      <item translatable="yes">blue</item>
+                      <item translatable="yes">reverse-red</item>
+                      <item translatable="yes">reverse-green</item>
+                      <item translatable="yes">reverse-blue</item>
+                      <item translatable="yes">grayscale</item>
+                    </items>
+                    <signal name="changed" handler="on_color_combobox_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="position">0</property>
@@ -349,22 +337,58 @@ applications-graphics</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkComboBoxText">
+                  <object class="GtkScaleButton" id="pen_radius_scale">
                     <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="active">0</property>
-                    <items>
-                      <item translatable="yes">colorful</item>
-                      <item translatable="yes">reverse-colorful</item>
-                      <item translatable="yes">red</item>
-                      <item translatable="yes">green</item>
-                      <item translatable="yes">blue</item>
-                      <item translatable="yes">reverse-red</item>
-                      <item translatable="yes">reverse-green</item>
-                      <item translatable="yes">reverse-blue</item>
-                      <item translatable="yes">grayscale</item>
-                    </items>
-                    <signal name="changed" handler="on_color_combobox_changed" swapped="no"/>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="tooltip-text" translatable="yes">pen radius</property>
+                    <property name="relief">none</property>
+                    <property name="orientation">vertical</property>
+                    <property name="adjustment">pen_radius</property>
+                    <property name="icons">applications-graphics
+applications-graphics
+applications-graphics</property>
+                    <child internal-child="plus_button">
+                      <object class="GtkButton">
+                        <property name="can-focus">False</property>
+                        <property name="receives-default">False</property>
+                      </object>
+                    </child>
+                    <child internal-child="minus_button">
+                      <object class="GtkButton">
+                        <property name="can-focus">False</property>
+                        <property name="receives-default">False</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScaleButton" id="pen_density_scale">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="tooltip-text" translatable="yes">pen density</property>
+                    <property name="relief">none</property>
+                    <property name="orientation">vertical</property>
+                    <property name="adjustment">pen_density</property>
+                    <property name="icons">applications-graphics
+applications-graphics
+applications-graphics</property>
+                    <child internal-child="plus_button">
+                      <object class="GtkButton">
+                        <property name="can-focus">False</property>
+                        <property name="receives-default">False</property>
+                      </object>
+                    </child>
+                    <child internal-child="minus_button">
+                      <object class="GtkButton">
+                        <property name="can-focus">False</property>
+                        <property name="receives-default">False</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="position">0</property>
