@@ -1,10 +1,10 @@
-# Gray-Scott
+# gray_scott_gtk3
 
 [![Gem](https://img.shields.io/gem/v/gray_scott_gtk3)](https://rubygems.org/gems/gray_scott_gtk3)
 [![test](https://github.com/kojix2/Gray-Scott/actions/workflows/ci.yml/badge.svg)](https://github.com/kojix2/Gray-Scott/actions/workflows/ci.yml)
 [![DOI](https://zenodo.org/badge/158914232.svg)](https://zenodo.org/badge/latestdoi/158914232)
 
-Ruby implementation of the Reaction diffusion system (Gray-Scott model).
+Ruby implementation of the [Reaction diffusion system](https://en.wikipedia.org/wiki/Reaction%E2%80%93diffusion_system) (Gray-Scott model).
 
 ![screenshot](https://raw.githubusercontent.com/kojix2/Gray-Scott/screenshot/screenshot/screenshot.gif)
 
@@ -13,6 +13,8 @@ Ruby implementation of the Reaction diffusion system (Gray-Scott model).
 ```bash
 gem install gray_scott_gtk3
 ```
+
+Support GPGPU with [Cumo](https://github.com/sonots/cumo).
 
 ## Usage
 
