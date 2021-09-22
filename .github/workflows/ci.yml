@@ -1,0 +1,21 @@
+name: test
+on: [push, pull_request]
+jobs:
+  build:
+    name: ${{ matrix.os }} Ruby ${{ matrix.ruby }}
+    runs-on: ${{ matrix.os }}-latest
+    strategy:
+      matrix:
+        os:   [ 'ubuntu' ]
+        ruby: [ '2.6', '2.7', '3.0' ]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - run: |
+          sudo apt install -y xvfb libgtk-3-0
+      - run: | 
+          bundle install
+      - run: |
+          xvfb-run bundle exec rake spec
