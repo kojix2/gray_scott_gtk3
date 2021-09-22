@@ -1,7 +1,7 @@
 # Gray-Scott
 
 [![Gem](https://img.shields.io/gem/v/gray_scott_gtk3)](https://rubygems.org/gems/gray_scott_gtk3)
-[![build status](https://travis-ci.com/kojix2/Gray-Scott.svg?branch=master)](https://travis-ci.com/github/kojix2/Gray-Scott)
+[![test](https://github.com/kojix2/Gray-Scott/actions/workflows/ci.yml/badge.svg)](https://github.com/kojix2/Gray-Scott/actions/workflows/ci.yml)
 [![DOI](https://zenodo.org/badge/158914232.svg)](https://zenodo.org/badge/latestdoi/158914232)
 
 Ruby implementation of the Reaction diffusion system (Gray-Scott model).
