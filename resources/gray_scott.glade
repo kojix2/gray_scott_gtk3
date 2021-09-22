@@ -19,7 +19,7 @@
   </object>
   <object class="GtkAdjustment" id="k">
     <property name="upper">0.10</property>
-    <property name="value">0.06</property>
+    <property name="value">0.059999999999999998</property>
     <property name="step-increment">0.01</property>
     <property name="page-increment">0.01</property>
     <signal name="value-changed" handler="on_k_changed" swapped="no"/>
@@ -294,104 +294,6 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="spacing">3</property>
-            <child>
-              <!-- n-columns=4 n-rows=1 -->
-              <object class="GtkGrid">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="border-width">0</property>
-                <child>
-                  <object class="GtkLabel" id="flabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="tooltip-text" translatable="yes">Feed is the feed rate of V</property>
-                    <property name="margin-start">5</property>
-                    <property name="margin-end">5</property>
-                    <property name="margin-top">5</property>
-                    <property name="margin-bottom">5</property>
-                    <property name="label" translatable="yes">Feed</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">0</property>
-                    <property name="top-attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScale" id="fscale">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="tooltip-text" translatable="yes">Feed is the feed rate of V</property>
-                    <property name="margin-start">5</property>
-                    <property name="margin-end">5</property>
-                    <property name="hexpand">True</property>
-                    <property name="adjustment">f</property>
-                    <property name="restrict-to-fill-level">False</property>
-                    <property name="fill-level">0</property>
-                    <property name="round-digits">0</property>
-                    <property name="digits">4</property>
-                    <property name="value-pos">left</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">1</property>
-                    <property name="top-attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScale" id="kscale">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="tooltip-text" translatable="yes">Kill is the removal/kill rate of U</property>
-                    <property name="margin-start">5</property>
-                    <property name="margin-end">5</property>
-                    <property name="hexpand">True</property>
-                    <property name="adjustment">k</property>
-                    <property name="restrict-to-fill-level">False</property>
-                    <property name="fill-level">0</property>
-                    <property name="round-digits">0</property>
-                    <property name="digits">4</property>
-                    <property name="value-pos">left</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">3</property>
-                    <property name="top-attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="klabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="tooltip-text" translatable="yes">Kill is the removal/kill rate of U</property>
-                    <property name="margin-start">5</property>
-                    <property name="margin-end">5</property>
-                    <property name="margin-top">5</property>
-                    <property name="margin-bottom">5</property>
-                    <property name="label" translatable="yes">Kill</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">2</property>
-                    <property name="top-attach">0</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">True</property>
-            <property name="fill">True</property>
-            <property name="padding">5</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkActionBar">
@@ -409,24 +311,6 @@
                     <property name="icons">applications-graphics
 applications-graphics
 applications-graphics</property>
-                    <child internal-child="plus_button">
-                      <object class="GtkButton">
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="relief">none</property>
-                      </object>
-                    </child>
-                    <child internal-child="minus_button">
-                      <object class="GtkButton">
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="relief">none</property>
-                      </object>
-                    </child>
                   </object>
                   <packing>
                     <property name="position">0</property>
@@ -444,24 +328,6 @@ applications-graphics</property>
                     <property name="icons">applications-graphics
 applications-graphics
 applications-graphics</property>
-                    <child internal-child="plus_button">
-                      <object class="GtkButton">
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="relief">none</property>
-                      </object>
-                    </child>
-                    <child internal-child="minus_button">
-                      <object class="GtkButton">
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="relief">none</property>
-                      </object>
-                    </child>
                   </object>
                   <packing>
                     <property name="position">0</property>
@@ -556,6 +422,104 @@ applications-graphics</property>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="spacing">3</property>
+            <child>
+              <!-- n-columns=4 n-rows=1 -->
+              <object class="GtkGrid">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="border-width">0</property>
+                <child>
+                  <object class="GtkLabel" id="flabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="tooltip-text" translatable="yes">Feed is the feed rate of V</property>
+                    <property name="margin-start">5</property>
+                    <property name="margin-end">5</property>
+                    <property name="margin-top">5</property>
+                    <property name="margin-bottom">5</property>
+                    <property name="label" translatable="yes">Feed</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScale" id="fscale">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">Feed is the feed rate of V</property>
+                    <property name="margin-start">5</property>
+                    <property name="margin-end">5</property>
+                    <property name="hexpand">True</property>
+                    <property name="adjustment">f</property>
+                    <property name="restrict-to-fill-level">False</property>
+                    <property name="fill-level">0</property>
+                    <property name="round-digits">0</property>
+                    <property name="digits">4</property>
+                    <property name="value-pos">left</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScale" id="kscale">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">Kill is the removal/kill rate of U</property>
+                    <property name="margin-start">5</property>
+                    <property name="margin-end">5</property>
+                    <property name="hexpand">True</property>
+                    <property name="adjustment">k</property>
+                    <property name="restrict-to-fill-level">False</property>
+                    <property name="fill-level">0</property>
+                    <property name="round-digits">0</property>
+                    <property name="digits">4</property>
+                    <property name="value-pos">left</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">3</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="klabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="tooltip-text" translatable="yes">Kill is the removal/kill rate of U</property>
+                    <property name="margin-start">5</property>
+                    <property name="margin-end">5</property>
+                    <property name="margin-top">5</property>
+                    <property name="margin-bottom">5</property>
+                    <property name="label" translatable="yes">Kill</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="padding">5</property>
             <property name="position">3</property>
           </packing>
         </child>
@@ -570,6 +534,7 @@ applications-graphics</property>
                 <property name="height-request">16</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">center</property>
                 <property name="icon-name">image-missing</property>
                 <property name="icon_size">1</property>
               </object>
@@ -592,10 +557,12 @@ applications-graphics</property>
             </child>
             <child>
               <object class="GtkEventBox">
+                <property name="width-request">512</property>
+                <property name="height-request">512</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="margin-top">5</property>
-                <property name="margin-bottom">5</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
                 <signal name="motion-notify-event" handler="on_motion" swapped="no"/>
                 <child>
                   <object class="GtkImage" id="gimage">
@@ -603,6 +570,8 @@ applications-graphics</property>
                     <property name="height-request">512</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="icon-name">image-missing</property>
                     <property name="icon_size">6</property>
                   </object>
