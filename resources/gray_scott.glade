@@ -91,7 +91,7 @@
                       <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Save</property>
+                        <property name="label" translatable="yes">Save model</property>
                         <property name="use-underline">True</property>
                         <signal name="activate" handler="on_save_clicked" swapped="no"/>
                       </object>
@@ -100,7 +100,7 @@
                       <object class="GtkMenuItem">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Save as PNG</property>
+                        <property name="label" translatable="yes">Save PNG image</property>
                         <property name="use-underline">True</property>
                         <signal name="activate" handler="on_convert_clicked" swapped="no"/>
                       </object>
@@ -118,29 +118,6 @@
                         <property name="label" translatable="yes">Quit</property>
                         <property name="use-underline">True</property>
                         <signal name="activate" handler="main_quit" swapped="no"/>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuItem">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Help</property>
-                <property name="use-underline">True</property>
-                <child type="submenu">
-                  <object class="GtkMenu">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <child>
-                      <object class="GtkMenuItem">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">About</property>
-                        <property name="use-underline">True</property>
-                        <signal name="activate" handler="show_about" swapped="no"/>
                       </object>
                     </child>
                   </object>
@@ -191,6 +168,29 @@
                         <property name="label" translatable="yes">p @k</property>
                         <property name="use-underline">True</property>
                         <signal name="activate" handler="debug_p_k" swapped="no"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Help</property>
+                <property name="use-underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <child>
+                      <object class="GtkMenuItem">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">About</property>
+                        <property name="use-underline">True</property>
+                        <signal name="activate" handler="show_about" swapped="no"/>
                       </object>
                     </child>
                   </object>
@@ -295,6 +295,7 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
+            <property name="homogeneous">True</property>
             <child>
               <object class="GtkActionBar">
                 <property name="visible">True</property>
@@ -318,7 +319,7 @@
                     <signal name="changed" handler="on_color_combobox_changed" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="position">0</property>
+                    <property name="position">3</property>
                   </packing>
                 </child>
                 <child>
@@ -333,80 +334,7 @@
                     <signal name="changed" handler="on_uv_combobox_changed" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScaleButton" id="pen_radius_scale">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
-                    <property name="tooltip-text" translatable="yes">pen radius</property>
-                    <property name="relief">none</property>
-                    <property name="orientation">vertical</property>
-                    <property name="adjustment">pen_radius</property>
-                    <property name="icons">applications-graphics
-applications-graphics
-applications-graphics</property>
-                    <child internal-child="plus_button">
-                      <object class="GtkButton">
-                        <property name="can-focus">False</property>
-                        <property name="receives-default">False</property>
-                      </object>
-                    </child>
-                    <child internal-child="minus_button">
-                      <object class="GtkButton">
-                        <property name="can-focus">False</property>
-                        <property name="receives-default">False</property>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScaleButton" id="pen_density_scale">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
-                    <property name="tooltip-text" translatable="yes">pen density</property>
-                    <property name="relief">none</property>
-                    <property name="orientation">vertical</property>
-                    <property name="adjustment">pen_density</property>
-                    <property name="icons">applications-graphics
-applications-graphics
-applications-graphics</property>
-                    <child internal-child="plus_button">
-                      <object class="GtkButton">
-                        <property name="can-focus">False</property>
-                        <property name="receives-default">False</property>
-                      </object>
-                    </child>
-                    <child internal-child="minus_button">
-                      <object class="GtkButton">
-                        <property name="can-focus">False</property>
-                        <property name="receives-default">False</property>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSpinButton">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="tooltip-text" translatable="yes">frames</property>
-                    <property name="input-purpose">digits</property>
-                    <property name="adjustment">frames</property>
-                    <property name="climb-rate">1</property>
-                    <property name="numeric">True</property>
-                  </object>
-                  <packing>
-                    <property name="pack-type">end</property>
-                    <property name="position">0</property>
+                    <property name="position">4</property>
                   </packing>
                 </child>
                 <child>
@@ -414,6 +342,7 @@ applications-graphics</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="tooltip-text" translatable="yes">msec</property>
+                    <property name="has-frame">False</property>
                     <property name="input-purpose">digits</property>
                     <property name="adjustment">msec</property>
                     <property name="climb-rate">1</property>
@@ -421,7 +350,23 @@ applications-graphics</property>
                   </object>
                   <packing>
                     <property name="pack-type">end</property>
-                    <property name="position">0</property>
+                    <property name="position">6</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinButton">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">frames</property>
+                    <property name="has-frame">False</property>
+                    <property name="input-purpose">digits</property>
+                    <property name="adjustment">frames</property>
+                    <property name="climb-rate">1</property>
+                    <property name="numeric">True</property>
+                  </object>
+                  <packing>
+                    <property name="pack-type">end</property>
+                    <property name="position">5</property>
                   </packing>
                 </child>
               </object>
@@ -429,17 +374,6 @@ applications-graphics</property>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSeparator">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
               </packing>
             </child>
           </object>
@@ -450,101 +384,136 @@ applications-graphics</property>
           </packing>
         </child>
         <child>
+          <object class="GtkSeparator">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="spacing">3</property>
             <child>
-              <!-- n-columns=4 n-rows=1 -->
-              <object class="GtkGrid">
+              <object class="GtkScaleButton" id="pen_density_scale">
                 <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="border-width">0</property>
-                <child>
-                  <object class="GtkLabel" id="flabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="tooltip-text" translatable="yes">Feed is the feed rate of V</property>
-                    <property name="margin-start">5</property>
-                    <property name="margin-end">5</property>
-                    <property name="margin-top">5</property>
-                    <property name="margin-bottom">5</property>
-                    <property name="label" translatable="yes">Feed</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">0</property>
-                    <property name="top-attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScale" id="fscale">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="tooltip-text" translatable="yes">Feed is the feed rate of V</property>
-                    <property name="margin-start">5</property>
-                    <property name="margin-end">5</property>
-                    <property name="hexpand">True</property>
-                    <property name="adjustment">f</property>
-                    <property name="restrict-to-fill-level">False</property>
-                    <property name="fill-level">0</property>
-                    <property name="round-digits">0</property>
-                    <property name="digits">4</property>
-                    <property name="value-pos">left</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">1</property>
-                    <property name="top-attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScale" id="kscale">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="tooltip-text" translatable="yes">Kill is the removal/kill rate of U</property>
-                    <property name="margin-start">5</property>
-                    <property name="margin-end">5</property>
-                    <property name="hexpand">True</property>
-                    <property name="adjustment">k</property>
-                    <property name="restrict-to-fill-level">False</property>
-                    <property name="fill-level">0</property>
-                    <property name="round-digits">0</property>
-                    <property name="digits">4</property>
-                    <property name="value-pos">left</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">3</property>
-                    <property name="top-attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="klabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="tooltip-text" translatable="yes">Kill is the removal/kill rate of U</property>
-                    <property name="margin-start">5</property>
-                    <property name="margin-end">5</property>
-                    <property name="margin-top">5</property>
-                    <property name="margin-bottom">5</property>
-                    <property name="label" translatable="yes">Kill</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">2</property>
-                    <property name="top-attach">0</property>
-                  </packing>
-                </child>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">pen density</property>
+                <property name="relief">none</property>
+                <property name="orientation">vertical</property>
+                <property name="size">button</property>
+                <property name="adjustment">pen_density</property>
               </object>
               <packing>
-                <property name="expand">True</property>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScaleButton" id="pen_radius_scale">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">pen radius</property>
+                <property name="relief">none</property>
+                <property name="orientation">vertical</property>
+                <property name="size">button</property>
+                <property name="adjustment">pen_radius</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="flabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="tooltip-text" translatable="yes">Feed is the feed rate of V</property>
+                <property name="margin-start">5</property>
+                <property name="margin-end">5</property>
+                <property name="margin-top">5</property>
+                <property name="margin-bottom">5</property>
+                <property name="label" translatable="yes">Feed</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">2</property>
               </packing>
             </child>
+            <child>
+              <object class="GtkScale" id="fscale">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="tooltip-text" translatable="yes">Feed is the feed rate of V</property>
+                <property name="margin-start">5</property>
+                <property name="margin-end">5</property>
+                <property name="hexpand">True</property>
+                <property name="adjustment">f</property>
+                <property name="restrict-to-fill-level">False</property>
+                <property name="fill-level">0</property>
+                <property name="round-digits">0</property>
+                <property name="digits">4</property>
+                <property name="value-pos">left</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="klabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="tooltip-text" translatable="yes">Kill is the removal/kill rate of U</property>
+                <property name="margin-start">5</property>
+                <property name="margin-end">5</property>
+                <property name="margin-top">5</property>
+                <property name="margin-bottom">5</property>
+                <property name="label" translatable="yes">Kill</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScale" id="kscale">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="tooltip-text" translatable="yes">Kill is the removal/kill rate of U</property>
+                <property name="margin-start">5</property>
+                <property name="margin-end">5</property>
+                <property name="hexpand">True</property>
+                <property name="adjustment">k</property>
+                <property name="restrict-to-fill-level">False</property>
+                <property name="fill-level">0</property>
+                <property name="round-digits">0</property>
+                <property name="digits">4</property>
+                <property name="value-pos">left</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">5</property>
+              </packing>
+            </child>
           </object>
           <packing>
-            <property name="expand">True</property>
+            <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="padding">5</property>
-            <property name="position">3</property>
+            <property name="position">4</property>
           </packing>
         </child>
         <child>
@@ -611,7 +580,7 @@ applications-graphics</property>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">4</property>
+            <property name="position">5</property>
           </packing>
         </child>
       </object>
