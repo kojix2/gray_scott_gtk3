@@ -74,7 +74,7 @@ module GrayScott
       @doing_now = true
       GLib::Timeout.add @msec do
         @frames.times do
-          model.update
+          model.step
         end
         display
         @doing_now

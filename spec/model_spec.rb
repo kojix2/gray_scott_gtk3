@@ -27,7 +27,7 @@ RSpec.describe GrayScott::Model do
     expect(@model).to respond_to :clear
   end
 
-  it 'respond to update' do
-    expect(@model).to respond_to :update
+  it 'respond to step' do
+    expect(@model).to respond_to :step
   end
 end

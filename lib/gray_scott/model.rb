@@ -35,7 +35,7 @@ module GrayScott
       v.fill 0.0
     end
 
-    def update
+    def step
       l_u = Utils::Math._laplacian2d u, Dx
       l_v = Utils::Math._laplacian2d v, Dx
 
@@ -44,10 +44,10 @@ module GrayScott
       dvdt = Dv * l_v + uvv - (f + k) * v
       u._ + (Dt * dudt)
       v._ + (Dt * dvdt)
-      immune_surveillance
+      sanitize
     end
 
-    def immune_surveillance
+    def sanitize
       # clip is better.
       @u[@u.lt 0.00001] = 0.00001
       @u[@u.gt 1] = 1
