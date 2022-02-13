@@ -43,3 +43,7 @@ In this case, you should increase the number of seconds.
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/kojix2/Gray-Scott.
+
+    Do you need commit rights to my repository?
+    Do you want to get admin rights and take over the project?
+    If so, please feel free to contact me @kojix2.
