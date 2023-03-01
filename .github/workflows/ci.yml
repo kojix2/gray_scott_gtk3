@@ -11,7 +11,6 @@ jobs:
     steps:
       - run: |
           sudo apt-get update -yq
-          sudo apt-get upgrade -yq
           sudo apt-get install -y libgtkd-3-dev libgirepository1.0-dev at-spi2-core xvfb
       - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
