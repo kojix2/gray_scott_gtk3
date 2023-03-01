@@ -15,7 +15,9 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - run: |
-          sudo apt install -y libgtkd-3-dev libgirepository1.0-dev at-spi2-core xvfb
+          sudo apt-get update -yq
+          sudo apt-get upgrade -yq
+          sudo apt-get install -y libgtkd-3-dev libgirepository1.0-dev at-spi2-core xvfb
       - run: |
           bundle install
       - run: |
