@@ -14,7 +14,7 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
       - run: |
-          sudo apt install -y libgtkd-3-dev xvfb
+          sudo apt install -y libgtkd-3-dev at-spi2-core xvfb
       - run: |
           bundle install
       - run: |
