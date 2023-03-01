@@ -9,15 +9,15 @@ jobs:
         os: ["ubuntu"]
         ruby: ["3.2"]
     steps:
+      - run: |
+          sudo apt-get update -yq
+          sudo apt-get upgrade -yq
+          sudo apt-get install -y libgtkd-3-dev libgirepository1.0-dev at-spi2-core xvfb
       - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - run: |
-          sudo apt-get update -yq
-          sudo apt-get upgrade -yq
-          sudo apt-get install -y libgtkd-3-dev libgirepository1.0-dev at-spi2-core xvfb
       - run: |
           bundle install
       - run: |
