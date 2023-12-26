@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         os: ["ubuntu"]
-        ruby: ["3.2"]
+        ruby: ["3.2", "3.3"]
     steps:
       - run: |
           sudo apt-get update -yq
