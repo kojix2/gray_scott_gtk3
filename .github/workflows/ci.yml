@@ -12,7 +12,7 @@ jobs:
       - run: |
           sudo apt-get update -yq
           sudo apt-get install -y libgtkd-3-dev libgirepository1.0-dev at-spi2-core xvfb
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
