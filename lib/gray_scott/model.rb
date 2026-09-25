@@ -17,6 +17,10 @@ module GrayScott
     attr_accessor :f, :k, :u, :v
 
     def initialize(width: 256, height: 256)
+      unless [width, height].all? { |dimension| dimension.is_a?(Integer) && dimension >= 2 }
+        raise ArgumentError, 'width and height must be integers greater than or equal to 2'
+      end
+
       # Feed rate
       @f = 0.04
 

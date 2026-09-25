@@ -8,11 +8,19 @@ OptionParser.new do |op|
   op.on('-h val', '--height', 'height of the model', Integer) { |v| opt[:height] = v }
   op.on('-w val', '--width', 'width of the model', Integer) { |v| opt[:width] = v }
   op.on('-g', '--gpu', 'use GPU(Cumo)') { |v| opt[:gpu] = v }
+  op.on_tail('--help', 'show this message') { puts op; exit }
   op.parse!(ARGV)
 end
 
-require 'cumo/narray' if opt[:gpu]
-opt.delete(:gpu)
+abort 'width and height must be integers greater than or equal to 2' unless opt[:width] >= 2 && opt[:height] >= 2
+
+if opt.delete(:gpu)
+  begin
+    require 'cumo/narray'
+  rescue LoadError
+    abort 'GPU support requires the optional cumo gem and a compatible CUDA environment'
+  end
+end
 
 require 'gray_scott'
 

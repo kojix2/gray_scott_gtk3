@@ -14,7 +14,9 @@ Ruby implementation of the [Reaction diffusion system](https://en.wikipedia.org/
 gem install gray_scott_gtk3
 ```
 
-Support GPGPU with [Cumo](https://github.com/sonots/cumo).
+GPGPU support requires installing [Cumo](https://github.com/sonots/cumo) separately in a compatible CUDA environment.
+
+Saved models use JSON. Models saved by older releases in the unsafe `Marshal` format cannot be opened.
 
 ## Usage
 

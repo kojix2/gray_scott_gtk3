@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'gtk3'
-  spec.add_dependency 'numo-narray'
+  spec.add_dependency 'numo-narray-alt'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'

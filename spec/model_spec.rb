@@ -30,4 +30,9 @@ RSpec.describe GrayScott::Model do
   it 'respond to step' do
     expect(@model).to respond_to :step
   end
+
+  it 'rejects dimensions smaller than two' do
+    expect { described_class.new(width: 1) }.to raise_error(ArgumentError)
+    expect { described_class.new(height: 0) }.to raise_error(ArgumentError)
+  end
 end
